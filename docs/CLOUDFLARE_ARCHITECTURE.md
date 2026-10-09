@@ -64,3 +64,12 @@ Keep actual contact details, identifiable consent, real submissions and private 
 - https://developers.cloudflare.com/d1/configuration/data-location/
 - https://developers.cloudflare.com/d1/platform/pricing/
 - https://developers.cloudflare.com/turnstile/get-started/server-side-validation/
+
+
+## Implementation note (2026-10-09) / 实现进度
+
+**中文：** v0.3 模拟沙盒已在 `cloudflare/src/worker.mjs`、`cloudflare/public/` 与 `cloudflare/migrations/` 实现基本发码、会话、A–F、B/D Mock 对话及匿名 V2 包；对应 Node 22 内存 SQLite 自动化测试已经通过。这里的测试管理密钥 **仅供沙盒 CLI 使用**，还没有接入 Cloudflare Access。尚未部署到真实 Cloudflare D1。
+
+**English:** The v0.3 mock sandbox implements synthetic issuance/session handling, staged submissions, B/D mock AI and blinded V2 exports. Node 22 in-memory SQLite tests pass. The CLI demonstration bearer token is **not** Cloudflare Access-based identity verification; a live Cloudflare D1 deployment has not been performed.
+
+See [cloudflare/README.md](../cloudflare/README.md). / 详见沙盒运行文档。
