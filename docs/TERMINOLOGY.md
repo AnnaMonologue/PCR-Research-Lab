@@ -84,3 +84,22 @@
 | 数据最小化 | Data minimisation | 仅收集研究问题所需的数据。 / Collect only necessary data. |
 | 数据保留期限 | Data retention schedule | 在同意书和协议中明确保留/删除。 / Defined retention and deletion policy. |
 | 人工发放访问码 | Researcher-mediated enrollment | 研究者审核并发送编号/访问码，参与者无需获得 API Key。 / Private issuing workflow. |
+
+
+## D. v0.4 interactive study interface / v0.4 交互研究界面（已确认术语）
+
+| 中文固定译名 | Canonical English | 定义与边界 / Definition and boundary |
+|---|---|---|
+| 实验说明与确认 | Study information and consent confirmation | 原型使用明确标注的虚构演示确认，不冒充真实获批知情同意 / Synthetic demo acknowledgement is not ethics-approved consent |
+| 任务说明页 | Task brief | 12 个马来语词汇及原研究任务约束 / Original task and constraints |
+| 分阶段引导 | Phase instructions | A–F 每阶段的目标、AI 规则、输出与提交条件 / Per-phase purpose, AI permission and exit gate |
+| 作品编辑区 | Design editor | B 的 V1 或 D 的 V2 最终提交文本 / Final participant-authored artefact fields |
+| AI 对话区 | AI chat panel | B/D 共用上下文、独立滚动的模拟对话区 / Same-conversation scrollable mock chat in B and D |
+| 自动对话轨迹 | Automatically captured dialogue trace | 仅记录新原型内可观察消息；Mock 与真实 API 必须明确区分 / In-app trace, distinct from historical copied transcripts |
+| 自动字数核验 | Automatic length validation | 分别统计 V1、V2 五项作品文本；不是 AI 自报字数 / Deterministic count of five design fields |
+| 必填项校验 | Required-field validation | 阶段提交前逐项核对，不允许跳过必填问题 / Blocking per-field validation before stage commit |
+| 阶段提交与锁定 | Phase submission and lock | 草稿保存不同于不可随意撤回的阶段提交 / Draft save differs from final phase commit |
+| 修改处理说明 | Critique disposition and evidence | E 参照 C 选处理类型并由参与者自行解释 V2 变化 / Participant-authored disposition and evidence |
+| 单份评分备注（选填） | Per-design rating note (optional) | 保留原 APIC 评审表“简短备注（选填）”属性 / Original optional per-design comment |
+| 总体评分说明（原型新增） | Overall rating rationale (prototype extension) | 所有 V2 评分结束后解释总体依据与不确定性；原表没有此栏目 / New after-all-ratings reflection, not in original rubric |
+| 评分提交确认 | Judge submission confirmation | 保留原评审表的三个确认项 / Three original judge confirmations |
