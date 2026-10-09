@@ -1,33 +1,40 @@
-# 离线完整流程演示 / Offline Full-Workflow Demonstration
+# PCR Research Lab v0.4 / PCR 研究原型 v0.4
 
-**打开方式 / How to launch:** 解压项目后，直接双击 `demo/index.html`。不需要安装 Node.js、Cloudflare、Wrangler、数据库或配置 DeepSeek API。 / Unzip and open `demo/index.html` directly in a modern browser. No installation or API credentials required.
+**直接双击 `demo/index.html` 即可开始。 / Double-click `demo/index.html` to start.** 不需要 Node.js、Cloudflare、数据库、网络连接或 DeepSeek API。/ No Node.js, Cloudflare, database, network or DeepSeek credentials are needed.
 
-> **虚构演示 / SYNTHETIC DEMONSTRATION ONLY.** All login codes, consent acknowledgements, generated text and ratings are fabricated for engineering checks, not research observations. / 所有编号、同意确认、生成文本及评分均为演示数据，绝非真实研究资料。
+> **SYNTHETIC DEMO ONLY / 完全虚构演示。** 不得输入真实参与者姓名、联系方式、研究作答或原 APIC 资料。编号、验证码和模拟 AI 回复都不提供真实身份验证或安全保障。/ Do not enter personal information or actual APIC records. Demo credentials do not provide security.
 
-## 三个角色 / Three roles
+## 操作 / Walkthrough
 
-| 角色 / Role | 工作流程 / Workflow |
-|---|---|
-| 研究者 / Researcher | 点击“生成虚构编号及访问码”；完成后生成匿名 V2 评分包，下载演示 JSON。 / Issue synthetic code; create blinded V2 packet and download fictional data. |
-| 参与者 / Participant | 登录测试码，确认仅输入虚构内容，按 A→F 完成。B/D 用“发送模拟消息”与固定 Mock AI 对话。每阶段可“填入完整虚构示例”，用于快速回归测试。 / Activate code, confirm synthetic only, complete A–F; B/D use mock AI with shared transcript. |
-| 评审 / Judge | 仅查看匿名 V2，使用原 APIC 1/3/5 分描述锚点分别以 J01 和 J02 评分、导出。 / View blinded V2, apply original rubric anchors and export independent fictional ratings. |
+1. **研究者 / Researcher:** 点击“生成虚构编号及访问码”，复制网页显示的 `SYNTHETIC_P...` 与 `DEMO-...`。/ Issue a synthetic code.
+2. **参与者 / Participant:** 使用编号与访问码登录。阅读简短研究说明并主动确认；查看含 12 个马来语词汇的任务介绍，再进入 A。/ Activate, acknowledge the study information and read the task brief.
+3. **A:** 填写四项独立构思及独立完成确认。/ Four required independent-ideation fields.
+4. **B:** 左侧填写 V1 五项设计，右侧至少发送一次模拟 AI 消息；点击“统计字数”，确认 600–800，再提交。/ Complete a five-part V1 and converse with mock AI in the split view, count, then submit.
+5. **C:** 查看锁定的 V1，独立填写前两条完整批评；第三条可选。/ Two required critiques, third optional, with no AI.
+6. **D:** 继续 B 的同一聊天，修改 V2 五项内容，再统计 600–800 字提交。/ Refine V2 using the same mock chat history.
+7. **E:** 系统只读引用 C 中的问题。每条批评由参与者选择处理类型并自行写出 V2 中的变化或未采用理由。/ Respond independently to each critique.
+8. **F:** 回答原研究三项事后问题、确认独立完成。/ Three post-task responses.
+9. **研究者:** 生成匿名 V2 评审包，下载演示 JSON。/ Generate and export a blinded packet.
+10. **评审 / Judge:** J01、J02 分别先浏览全部匿名 V2，再按原四维 1–5 分量规评分。**每份评分备注选填**。全部打分后填写**总体评分说明**、完成原表的三项确认，分别导出评审 JSON。/ Read all designs, rate on four dimensions; per-design note optional; overall rationale and final three checks required.
 
-**浏览器存储 / Browser storage:** localStorage in this browser only; this is not secure storage. Demo access codes **are deliberately not secure authentication**, since there is no backend. Clear via “清空所有演示数据”. / 演示登录仅验证流程，不能替代真实身份认证。
+每阶段可以用“填写完全虚构示例”快速测试；B/D 的虚构样例是真正经计数器核验的作品文本，不会伪造 `word_count=630`。/ The fictional sample text is actually counted by the same counter; no fabricated word-count fields are used.
 
-## 论文一致性 / Fidelity to the APIC protocol
+## 校验规则 / Validation
 
-- A（独立构思）→ B（AI 辅助 V1）→ C（独立批评）→ D（AI 辅助 V2）→ E（批评处理说明）→ F（事后解释）。 / Staged six-phase workflow.
-- B/D each require a mock conversation turn; C requires two complete critiques, with an optional third. / B/D 各需一次模拟对话；C 两条必填批评，一条选填。
-- E requires a corresponding response for every submitted critique. / E 必须逐条回应批评。
-- V1/V2 retain the **self-declared** 600–800-character requirement; the prototype does not perform Word-equivalent character counting. / 字数由测试用户填写声明，不宣称实现 Word 完全一致的统计。
-- Reviewer gets V2 only; four 1–5 dimensions with 1/3/5 descriptions from original APIC materials. / 四维盲评及锚点保持原义。
+- 每个必填文本框都必须填写；空字段显示行内错误并禁止提交。/ Required fields block progression.
+- B/D 分别将五项作品正文合并计数。汉字逐字计数；连续 Latin 字母或数字按一个单位计；忽略标点、空格、界面文字与 AI 对话。算法名称为 `pcr-han-latin-v1`。/ Han characters and Latin/number tokens counted separately; punctuation/chat excluded.
+- 点击“统计字数”后显示核对结果；任何修改都会让上一轮核验失效；提交时再次验证 600–800 的区间。/ Recount after edits and on submission.
+- 原 APIC 使用 Word 手动计数，混合文本在不同统计工具中可能有差异。/ This algorithm is not guaranteed identical to Microsoft Word counting.
+- C 必须在 D 前锁定；A/C/E/F 不提供 AI 交互；D 复用 B 的聊天。/ C must commit before D; AI only B/D.
+- 浏览器 `localStorage` 自动保存**虚构草稿**，不构成安全或长期保存机制。清除浏览器数据可能使记录丢失。/ Browser-local drafts are neither confidential nor durable study storage.
 
-## Cloudflare and DeepSeek adapters / 云端与模型接口预留
+## 与原研究的关系 / Method provenance
 
-- Cloudflare design: `../cloudflare/` (separate optional future integration; **no installation or deployment required**). / 云端实现仅作为可选设计与代码参考。
-- DeepSeek relay: `../server.js` local-only demonstration and `.env.example` placeholders; **this offline demo never reads or uses an API Key**. / 模型接入保留说明，不启用。
-- API credentials, real participants, real transcribed dialogues and consent forms must **never** be included in this public demo. / 禁止使用真实研究资料。
+原研究评审表每份作品均有可选“简短备注”。据研究者说明，原评审还曾口头提供总体评价，但没有收录在原表中。v0.4 将这些总体感受规范成书面填写；不能把新的模拟文字当成旧评审的原话。/ Original per-design notes were optional. The researcher reports that the judges also gave overall impressions orally; the updated interface documents such reflections in writing but does not reconstruct historical speech.
 
-## Test scope / 测试范围
+## 预留接口 / Reserved integrations
 
-`npm test` (only for developers who already have Node installed) checks the model, Cloudflare mock server and original PCR structural constraints. Browser-interaction checks should separately verify researcher issue → A–F → two mock AI phases → blind packet → J01/J02 ratings. / 自动化测试与浏览器端到端检查分别进行。
+- `../cloudflare/`: Cloudflare Workers/D1 的可选技术方案与模拟骨架，**不用安装或部署**。/ Optional future interface; not required.
+- `../server.js` 与 `.env.example`: DeepSeek API 预留代理与配置说明。当前 `demo/` 从不读取 API Key 或发送 AI 请求。/ Optional API architecture; this demo makes no model requests.
+
+开发测试 / Developer-only checks (optional): `npm test`。普通使用者只需打开 HTML，不必安装依赖。/ Tests are optional for developers; ordinary users open the HTML.
