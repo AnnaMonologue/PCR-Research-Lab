@@ -1,0 +1,35 @@
+/** Synthetic-only participant UI / 仅虚构参与者端。Never uses original case data. */
+const PHASES=['A','B','C','D','E','F'];
+const TITLES={A:'独立构思 / Independent ideation',B:'AI 辅助 V1 / AI-supported first design',C:'独立批评 / Independent critique',D:'AI 辅助修订 V2 / AI-supported revision',E:'批评处理对照 / Critique dispositions',F:'事后解释 / Post-task account'};
+const FIELDS={
+ A:[['idea','核心构想 / Initial idea'],['mechanism','游戏机制 / Game mechanics'],['vocabulary','词汇练习方式 / Vocabulary practice'],['priority','最重要设计标准 / Main criterion']],
+ B:[['materials','所需材料与成本 / Materials and cost'],['rules','游戏流程（≤15 分钟） / Rules and flow'],['learning','12 词练习与反馈 / Vocabulary practice and feedback'],['ending','得分及结束方式 / Scoring and ending'],['rationale','设计理由 / Design rationale']],
+ C:[...['1','2'].flatMap(n=>[['crit'+n+'_problem',`批评 ${n}：具体问题 / Critique ${n}: problem`],['crit'+n+'_reason',`理由 / Reason ${n}`],['crit'+n+'_proposal',`修改建议 / Proposal ${n}`]])],
+ D:[['materials','修订材料与成本 / Revised materials'],['rules','修订游戏规则 / Revised rules'],['learning','修订练习与反馈 / Revised learning and feedback'],['ending','修订得分与结束 / Revised scoring and ending'],['rationale','修订理由 / Revised rationale']],
+ E:[...['1','2'].flatMap(n=>[['crit'+n+'_handling',`批评 ${n} 的处理方式 / Handling of critique ${n}`],['crit'+n+'_evidence',`V2 具体变化 / V2 evidence ${n}`]])],
+ F:[['main_change','最重要的变化 / Most important change'],['source','变化来源 / Source of change'],['rejected','未采纳的 AI 建议（没有可填无） / Rejected AI suggestion (or none)']]
+};
+let state=null;
+const $=s=>document.querySelector(s);
+const create=(tag,parent,text,cls)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;parent.append(e);return e;};
+function msg(t,error=false){$('#message').textContent=t;$('#message').className='status'+(error?' error':'');}
+async function request(path,method='GET',data){const options={method,credentials:'same-origin',headers:{}};if(data!==undefined){options.headers['Content-Type']='application/json';options.body=JSON.stringify(data);}const r=await fetch('/api/'+path,options);const out=await r.json();if(!r.ok)throw Error(out.error||`HTTP ${r.status}`);return out;}
+function lock(button,promise){button.disabled=true;return promise.finally(()=>button.disabled=false);}
+async function refresh(){try{state=await request('state');render();msg('已载入模拟会话 / Synthetic session loaded');}catch(e){$('#console').hidden=true;$('#welcome').hidden=false;msg(e.message,true);}}
+$('#login').addEventListener('submit',async e=>{e.preventDefault();const b=e.submitter;try{await lock(b,request('activate','POST',{participant_id:$('#pid').value.trim(),access_code:$('#code').value}));$('#code').value='';await refresh();}catch(error){msg(error.message,true);}});
+$('#refresh').onclick=refresh;
+$('#withdraw').onclick=async()=>{if(!confirm('终止虚构测试会话？ / Revoke synthetic session?'))return;try{await request('withdraw','POST',{});state=null;$('#console').hidden=true;$('#welcome').hidden=false;msg('已终止 / Revoked');}catch(e){msg(e.message,true);}};
+function render(){if(!state)return;$('#welcome').hidden=true;$('#console').hidden=false;const p=$('#progress');p.replaceChildren();for(const s of PHASES)create('span',p,s,'step'+(PHASES.indexOf(s)<PHASES.indexOf(state.stage)?' done':s===state.stage?' active':''));$('#quota').textContent=`${state.participant_id} · AI：${state.used_ai_calls}/${state.max_ai_calls}`;const root=$('#phase');root.replaceChildren();if(!state.consented){ack(root);return;}if(state.stage==='done'){create('h2',root,'模拟实验已完成 / Synthetic flow complete');create('p',root,'阶段已保存在 D1 中。评审数据由研究者独立导出。 / Stages are stored server-side; blinded packets require researcher credentials.');return;}const st=state.stage;create('h2',root,`阶段 ${st} · ${TITLES[st]}`);
+create('div',root,'仅限虚构内容，不要使用任何真人数据。 / Fictional data only. Do not enter actual participant information.','notice');
+if(st==='C'||st==='D'||st==='E'){const prev=state.completed[st==='C'?'B':st==='D'?'C':'D'];if(prev){const details=create('details',root);create('summary',details,'查看上一阶段提交内容 / View previous submitted stage');create('pre',details,JSON.stringify(prev,null,2));}}
+if(st==='B'||st==='D')chat(root,st);
+const f=create('form',root);for(const [name,label] of FIELDS[st]){const l=create('label',f,label);const e=create('textarea',l);e.name=name;e.required=true;e.maxLength=6000;}
+if(st==='E'&&state.completed.C?.crit3_problem){for(const [name,label] of [['crit3_handling','批评 3 处理方式 / Handling of critique 3'],['crit3_evidence','批评 3 的 V2 变化 / V2 evidence 3']]){const l=create('label',f,label);const e=create('textarea',l);e.name=name;e.required=true;e.maxLength=3000;}}
+if(st==='C'){for(const [name,label] of [['crit3_problem','选填批评 3 / Optional critique 3 problem'],['crit3_reason','理由 / Reason'],['crit3_proposal','建议 / Proposal']]){const l=create('label',f,label);const e=create('textarea',l);e.name=name;e.maxLength=3000;}}
+if(st==='B'||st==='D'){const l=create('label',f,'设计字数（虚构测试中填 600–800） / Declared design character count (600–800 for sandbox)');const e=create('input',l);e.type='number';e.name='word_count';e.min=600;e.max=800;e.value='650';e.required=true;}
+const b=create('button',f,`提交阶段 ${st} / Submit phase ${st}`);b.type='submit';f.onsubmit=async ev=>{ev.preventDefault();const data={};for(const e of f.querySelectorAll('textarea,input'))data[e.name]=e.name==='word_count'?Number(e.value):e.value.trim();if(st==='C'&&['problem','reason','proposal'].some(k=>data['crit3_'+k])&&!['problem','reason','proposal'].every(k=>data['crit3_'+k])){msg('第三条批评需要填写完整 / Optional critique must be complete',true);return;}
+if(st==='E'){data.optional_third=!!state.completed.C?.crit3_problem;}try{await lock(b,request('stage','POST',{stage:st,answers:data}));await refresh();}catch(error){msg(error.message,true);}};
+}
+function ack(root){create('h2',root,'仅为模拟运行确认 / Synthetic-run acknowledgement');create('p',root,'这里不是知情同意书，也不允许真实参与者参加。请只输入虚构研究答案。 / This is not research consent. Use fictional answers exclusively.');const b=create('button',root,'确认虚构数据测试 / Confirm synthetic-only test');b.onclick=async()=>{try{await lock(b,request('consent','POST',{version:'SANDBOX-SYNTHETIC-ACK-v1',synthetic_ack:true}));await refresh();}catch(e){msg(e.message,true);}};}
+function chat(root,phase){create('h3',root,'模拟 AI 对话 / Mock AI conversation');const output=create('div',root,undefined,'chatlog');const turns=state.turns||[];for(const turn of turns){const x=create('div',output,undefined,'entry');create('strong',x,turn.stage+' · 参与者 / Participant');create('p',x,turn.user_text);create('strong',x,'模拟 AI / Mock AI');create('p',x,turn.assistant_text);}const f=create('form',root);const l=create('label',f,'发送虚构问题 / Send a fictional prompt');const input=create('textarea',l);input.required=true;input.maxLength=4000;const b=create('button',f,'发送 / Send');b.type='submit';f.onsubmit=async ev=>{ev.preventDefault();try{const data=await lock(b,request('chat','POST',{stage:phase,request_id:crypto.randomUUID(),message:input.value.trim()}));msg(`${data.model} · ${data.reply}`);await refresh();}catch(e){msg(e.message,true);}};}
+refresh();
