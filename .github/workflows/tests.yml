@@ -19,6 +19,8 @@ jobs:
           node-version: '22'
       - name: JavaScript syntax check / JS 语法检查
         run: |
+          node --check demo/model.js
+          node --check demo/app.js
           node --check cloudflare/src/worker.mjs
           node --check cloudflare/src/worker.test.mjs
           node --check cloudflare/public/sandbox.js
