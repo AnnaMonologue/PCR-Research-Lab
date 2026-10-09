@@ -5,6 +5,8 @@
 
 > **研究开发演示 / DEVELOPMENT DEMO ONLY.** This public source repository includes **no actual study participants, research records, or API credentials**. It is not ready for remote recruitment or authentic data collection. / 本公开源码仓库不包含真实参与者资料、研究记录或 API 密钥；目前不能开展线上真实招募和数据采集。
 
+- [QA / 测试报告](docs/DEMO_QA_REPORT.md)
+
 ## 1. Purpose / 项目目的
 
 **中文：** 本项目源于作者 APIC 2026 论文 *Shifting Assessment Focus: Managing Behaviour and Measuring Innovation Performance in Human–AI Co-creation*，将既有的 Prompt–Critique–Refinement（PCR）流程数字化，以改善研究活动的一致性、过程记录、匿名作品评审和可复现性。当前版本仅展示研究装置的技术可行性，不主张新的学习成效、因果效应或测量效度。
