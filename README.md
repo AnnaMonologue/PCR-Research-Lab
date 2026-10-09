@@ -136,3 +136,23 @@ The publicly visible repository does not automatically grant reuse rights; no op
 - [QA tracking Issue #5 / 测试任务](https://github.com/AnnaMonologue/PCR-Research-Lab/issues/5)
 
 **Status / 当前状态：** Existing local mock tests pass; full browser end-to-end and Cloudflare enrollment tests are outstanding. / 本地 Mock 自动化检查已通过，但完整浏览器测试、云端发码和权限测试仍待实现。
+
+
+## 11. Cloudflare v0.3 mock sandbox / v0.3 Cloudflare 虚构实验沙盒
+
+**中文：** 新增独立的 Cloudflare Worker + D1 研究装置演示，包含**虚构参与者**临时访问码发放、一次性激活、HttpOnly 会话、服务端 A–F 阶段校验、B/D Mock AI 对话及跨阶段上下文、调用额度、撤销与匿名 V2 评审包。中英双语参与者页面位于 `cloudflare/public/`。
+
+**English:** A separate Cloudflare Worker + D1 sandbox implements researcher-issued codes for **synthetic participants**, single-use activation, short-lived HttpOnly sessions, server-enforced A–F progression, B/D mock AI dialogue across stages, per-person quotas, revocation and blinded V2 packet export. The bilingual participant interface is in `cloudflare/public/`.
+
+**Verified locally / 本地验证：** 17 Node tests passed; original PCR structural checks passed. These run against Node 22's in-memory SQLite adapter and **have not been validated against Cloudflare-hosted D1**. / 通过 Node 22 内存 SQLite 的 17 项自动化检查，尚未验证远程 Cloudflare D1。
+
+**Release conditions / 上线边界：** No DeepSeek API calls, no genuine participant materials, no real recruitment. Cloudflare Access researcher authentication, resilient rate limiting, approved privacy/ethics arrangements and browser E2E tests remain outstanding. / 不调用真实模型、不处理真人资料、不开展真人招募；正式权限与伦理验收尚未完成。
+
+- [Cloudflare sandbox runbook / 沙盒部署与操作说明](cloudflare/README.md)
+- [Sandbox Worker / 沙盒 Worker](cloudflare/src/worker.mjs)
+- [Bilingual participant UI / 双语参与者界面](cloudflare/public/index.html)
+- [Integration tests / 服务端集成测试](cloudflare/src/worker.test.mjs)
+- [GitHub Actions CI / 自动化测试](.github/workflows/tests.yml)
+- [Implementation tracker / v0.3 开发跟踪](https://github.com/AnnaMonologue/PCR-Research-Lab/issues/2)
+
+**Stage distinction / 状态区别：** Code committed to GitHub ≠ Cloudflare deployment ≠ approved human-subject study. / GitHub 源码提交、Cloudflare 部署和获批正式研究是三个不同阶段。
