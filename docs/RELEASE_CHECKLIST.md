@@ -28,13 +28,15 @@
 **STOP / 停止条件：** Until Stages 1–2 are complete, no real participant or API Key should enter the internet-facing sandbox. / 第一、二阶段未完成前，不得在线收集真实参与者数据，也不得给测试沙盒配置可用于公开调用的模型密钥。
 
 
-## Legacy Word data import / 原始 Word 导入闸门
+## Compatibility and functional QA / 历史参考与功能测试
 
-- [x] Bilingual field mapping and synthetic-only import shape / 双语映射、仅虚构导入结构
-- [x] Historical manually copied transcript provenance distinct from API native logs / 手工复制与原生日志分隔
-- [ ] Researcher confirms private folder-to-analytic-case crosswalk / 研究者核实私有案例对应
-- [ ] Manual Word layout and media review, including alternative templates / 对表格变体与媒体进行人工检查
-- [ ] Eligibility/consent and study data-use permissions checked privately / 私有核实研究许可
-- [ ] Private de-identification and import validation before any actual conversion / 真实转换前去标识化和验证
+- [x] Cancelled legacy Word importer / 已取消真实 Word 导入器（Issue #4）
+- [x] Documented private read-only field/rubric cross-check / 已制定私有只读字段与量规核对方案
+- [x] Documented fully synthetic workflow testing / 已制定虚构全流程测试方案
+- [x] Existing mock localhost tests: 8 passed, 0 failed (2026-10-09) / 已有本地 Mock 自动化检查通过
+- [x] Existing Cloudflare sandbox fail-closed tests: 2 passed, 0 failed (2026-10-09) / 云端沙盒关闭状态测试通过
+- [ ] Full manual A–F browser walkthrough using only fictional records / 待完成全流程浏览器测试
+- [ ] Cross-check historical protocol privately against UI; report only aggregate pass/fail / 待完成私有逐项核对
+- [ ] Cloudflare login/quotas/persistence E2E after implementation / 线上认证、额度、持久化功能待实现
 
-**STOP / 停止：** Historical actual submissions are NOT Cloudflare sandbox fixtures. / 历史真人数据不能拿来当 Cloudflare 测试数据。
+**STOP / 限制：** Original participant documents are read-only reference material, never Cloudflare test fixtures. / 真实原件不充当云端测试输入。See [QA strategy / 测试策略](TEST_STRATEGY.md).
