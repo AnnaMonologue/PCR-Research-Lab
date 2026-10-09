@@ -1,3 +1,16 @@
+## Prototype-only scope / 仅原型演示（当前决定）
+
+**Current acceptance / 当前验收标准：** Offline synthetic role walkthrough and automated tests; Cloudflare/DeepSeek are interface reservations, **not deployment milestones**. / 只做离线虚构流程、测试和接口文档，不安装、不部署、不配置真实 API。
+
+- [x] Offline mock participant login code and six-stage flow / 虚构编号与 A–F
+- [x] B/D mock conversation, saved drafts and rating workflow / 模拟对话、草稿与评分
+- [x] Original four-dimensional APIC rubric anchors / 原始四维量规锚点
+- [x] Node tests: 24/24; browser injected-source E2E pass / Node 24 项和浏览器注入源码流程测试通过
+- [x] Manual-only GitHub Actions; no automatic email-triggering CI / CI 只允许手动运行
+- [ ] Direct double-click file-opening validation on user device / 用户设备双击运行仍需核查
+
+**Not required for prototype / 原型不要求：** Cloudflare provisioning, live DeepSeek API, production authentication, genuine research subjects, hosted data storage. / 云端和真人研究属于未来独立项目。
+
 # 发布闸门 / Release Checklist
 
 **Planning document only / 仅为计划文档；不代表已获伦理许可。**
