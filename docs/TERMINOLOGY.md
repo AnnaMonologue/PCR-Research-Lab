@@ -101,5 +101,5 @@
 | 阶段提交与锁定 | Phase submission and lock | 草稿保存不同于不可随意撤回的阶段提交 / Draft save differs from final phase commit |
 | 修改处理说明 | Critique disposition and evidence | E 参照 C 选处理类型并由参与者自行解释 V2 变化 / Participant-authored disposition and evidence |
 | 单份评分备注（选填） | Per-design rating note (optional) | 保留原 APIC 评审表“简短备注（选填）”属性 / Original optional per-design comment |
-| 总体评分说明（原型新增） | Overall rating rationale (prototype extension) | 所有 V2 评分结束后解释总体依据与不确定性；原表没有此栏目 / New after-all-ratings reflection, not in original rubric |
+| 总体评分说明 | Overall rating rationale | 所有 V2 评分完成后，书面记录整体评分依据与不确定性。原研究评审曾向研究者口头反馈总体感受，未写入评分表；新版规范该环节的文字记录。 / Written record of overall judgments formerly conveyed orally; not a pre-existing field or verbatim transcript in the historical scoring forms. |
 | 评分提交确认 | Judge submission confirmation | 保留原评审表的三个确认项 / Three original judge confirmations |
