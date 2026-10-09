@@ -2,8 +2,8 @@
 const base=(process.env.PCR_SANDBOX_URL||'').replace(/\/$/,'');
 const token=process.env.RESEARCHER_DEMO_TOKEN||'';
 const action=process.argv[2]||'help';
-if(!base.startsWith('https://')||token.length<32){
- console.error('Provide HTTPS sandbox URL and >=32-character researcher demo token / 需要 HTTPS 地址及长度至少 32 的测试管理密钥');
+if(!(base.startsWith('https://')||/^http:\/\/(?:localhost|127\.0\.0\.1)(?::\d+)?$/.test(base))||token.length<32){
+ console.error('Provide HTTPS URL (or HTTP localhost for development) and >=32-character researcher demo token / 需要 HTTPS 地址及长度至少 32 的测试管理密钥');
  process.exit(2);
 }
 const commands={
