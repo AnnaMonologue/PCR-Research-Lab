@@ -126,3 +126,18 @@ This is **locally tested code**, not a deployed Cloudflare application or a secu
 To run current automated checks / 运行自动化检查：`npm test`.
 
 **Release blocker / 上线阻断项：** Cloudflare Access researcher identity, durable abuse protection, backup/recovery, Cloudflare-hosted D1 validation, formal privacy and ethics approval. / 研究者身份校验、滥用防护、备份、真实 Cloudflare D1 验证及伦理审查尚未完成。
+
+
+## v0.4 locked interaction design / v0.4 已确认交互设计（尚未实现）
+
+**中文：** 2026-10-09 已确认 v0.4 的界面设计。包括：简短研究说明和确认、独立任务介绍、A–F 每阶段说明与字段校验、B/D 双栏作品编辑和模拟 AI 对话、600–800 字自动统计、C→E 逐项对应、匿名 V2 评审。**每份设计的简短评分备注选填**；全部评分后新增**总体评分说明（原型扩展）**，最后保留原表的三项评审确认。
+
+**English:** The owner approved the v0.4 interface design on 2026-10-09: study-information acknowledgement, task brief, bilingual A–F guidance and required-field checks, two-pane B/D mock AI and artefact editor, deterministic 600–800 length validation, critique dispositions, and blinded V2 review. **Per-design rating notes remain optional**, while a **prototype-only overall rating rationale** follows completion of all scores, before the original three final confirmations.
+
+**Status / 状态:** Requirements are fixed; the v0.4 UI **is not yet implemented**. This remains an offline synthetic-only prototype; Cloudflare and DeepSeek are documented extension points only. / 当前仅确认设计并记录实施任务，不代表完成新版功能、云端部署或真实 AI 调用。
+
+- [Approved v0.4 bilingual spec / 已确认的 v0.4 设计规范](docs/V0_4_INTERACTION_DESIGN.md)
+- [Implementation checklist Issue #6 / 实现与验收任务](https://github.com/AnnaMonologue/PCR-Research-Lab/issues/6)
+- [Canonical terminology / 双语术语库](docs/TERMINOLOGY.md)
+
+**Testing policy / 测试策略:** Implement first, then execute one consolidated test-and-fix cycle; leave GitHub Actions manual-only. / 全部修改完成后再集中测试与修复，Actions 保持手动。
