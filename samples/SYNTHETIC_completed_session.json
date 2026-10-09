@@ -1,0 +1,178 @@
+{
+  "schema": "pcr-participant-v1",
+  "version": "0.1.0",
+  "session_id": "SYNTHETIC-DEMO-NO-HUMANS",
+  "started_at": "2026-10-09T10:39:18.985Z",
+  "phase_index": 6,
+  "drafts": {},
+  "completed": {
+    "A": {
+      "idea": "【合成示例】做一款词卡接龙游戏",
+      "mechanism": "两人轮流抽卡并用句子解释",
+      "vocabulary": "让参与者识别、回忆十二词",
+      "priority": "提供即时反馈并控制材料成本",
+      "confirm": true
+    },
+    "B": {
+      "model": "模拟外部 AI / NO REAL MODEL",
+      "materials": "合成示例：打印12张词卡，不超过30元",
+      "rules": "合成示例：轮流抽卡，15分钟内覆盖所有词",
+      "learning": "合成示例：重复记忆与主动回忆",
+      "ending": "合成示例：答对积分，全部卡用完结束",
+      "rationale": "合成示例：入门语言学习者有清楚反馈",
+      "transcript": "[SYNTHETIC TEST ONLY] USER: 请优化词卡游戏\nAI: 请加入即时反馈环节",
+      "word_count": "700",
+      "word_count_confirmed": true,
+      "settings_confirmed": true,
+      "confirm": true
+    },
+    "C": {
+      "crit1_problem": "合成示例：缺少错误反馈",
+      "crit1_reason": "会妨碍参与者自查",
+      "crit1_proposal": "加入同伴提示",
+      "crit2_problem": "合成示例：覆盖所有词的规则不清楚",
+      "crit2_reason": "可能有遗漏",
+      "crit2_proposal": "按顺序抽取所有卡",
+      "confirm": true
+    },
+    "D": {
+      "materials": "合成示例：12张词卡、提示卡若干",
+      "rules": "合成示例：按照预定顺序抽卡，确保覆盖12词",
+      "learning": "合成示例：答错有同伴提示并重试",
+      "ending": "合成示例：15分钟后结束，按正确数量记分",
+      "rationale": "合成示例：规则清楚、成本低",
+      "transcript": "[SYNTHETIC TEST ONLY] USER: 帮我给每轮加入错误反馈\nAI: 可以让同伴给出提示",
+      "word_count": "730",
+      "word_count_confirmed": true,
+      "same_conversation": true,
+      "confirm": true
+    },
+    "E": {
+      "crit1_handling": "as_proposed",
+      "crit1_evidence": "V2 在错误反馈加入同伴提示",
+      "crit2_handling": "alternative",
+      "crit2_evidence": "V2 采用固定抽卡次序确保覆盖",
+      "confirm": true
+    },
+    "F": {
+      "main_change": "错误反馈改为提示+重试",
+      "source": "根据自己问题意识先提出，后参考AI建议",
+      "rejected": "没有",
+      "confirm": true
+    }
+  },
+  "events": [
+    {
+      "seq": 1,
+      "type": "session_created",
+      "stage": null,
+      "at": "2026-10-09T10:39:18.985Z",
+      "details": {
+        "version": "0.1.0"
+      }
+    },
+    {
+      "seq": 2,
+      "type": "stage_submitted",
+      "stage": "A",
+      "at": "2026-10-09T10:39:18.987Z",
+      "details": {
+        "required_fields_valid": true,
+        "manual_transcript": false
+      }
+    },
+    {
+      "seq": 3,
+      "type": "stage_entered",
+      "stage": "B",
+      "at": "2026-10-09T10:39:18.987Z",
+      "details": {}
+    },
+    {
+      "seq": 4,
+      "type": "stage_submitted",
+      "stage": "B",
+      "at": "2026-10-09T10:39:18.987Z",
+      "details": {
+        "required_fields_valid": true,
+        "manual_transcript": true
+      }
+    },
+    {
+      "seq": 5,
+      "type": "stage_entered",
+      "stage": "C",
+      "at": "2026-10-09T10:39:18.987Z",
+      "details": {}
+    },
+    {
+      "seq": 6,
+      "type": "stage_submitted",
+      "stage": "C",
+      "at": "2026-10-09T10:39:18.987Z",
+      "details": {
+        "required_fields_valid": true,
+        "manual_transcript": false
+      }
+    },
+    {
+      "seq": 7,
+      "type": "stage_entered",
+      "stage": "D",
+      "at": "2026-10-09T10:39:18.987Z",
+      "details": {}
+    },
+    {
+      "seq": 8,
+      "type": "stage_submitted",
+      "stage": "D",
+      "at": "2026-10-09T10:39:18.987Z",
+      "details": {
+        "required_fields_valid": true,
+        "manual_transcript": true
+      }
+    },
+    {
+      "seq": 9,
+      "type": "stage_entered",
+      "stage": "E",
+      "at": "2026-10-09T10:39:18.987Z",
+      "details": {}
+    },
+    {
+      "seq": 10,
+      "type": "stage_submitted",
+      "stage": "E",
+      "at": "2026-10-09T10:39:18.987Z",
+      "details": {
+        "required_fields_valid": true,
+        "manual_transcript": false
+      }
+    },
+    {
+      "seq": 11,
+      "type": "stage_entered",
+      "stage": "F",
+      "at": "2026-10-09T10:39:18.987Z",
+      "details": {}
+    },
+    {
+      "seq": 12,
+      "type": "stage_submitted",
+      "stage": "F",
+      "at": "2026-10-09T10:39:18.987Z",
+      "details": {
+        "required_fields_valid": true,
+        "manual_transcript": false
+      }
+    },
+    {
+      "seq": 13,
+      "type": "session_finished",
+      "stage": null,
+      "at": "2026-10-09T10:39:18.987Z",
+      "details": {}
+    }
+  ],
+  "finished_at": "2026-10-09T10:39:18.987Z"
+}

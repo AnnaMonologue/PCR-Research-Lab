@@ -1,0 +1,11 @@
+.env
+.env.*
+!.env.example
+runtime/
+node_modules/
+.DS_Store
+*.log
+*.tmp
+participant_exports/
+private_data/
+__pycache__/

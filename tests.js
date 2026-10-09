@@ -1,0 +1,10 @@
+'use strict';const assert=require('node:assert/strict');const P=require('./core.js');
+function dummy(){const s=P.start();const templates={A:{idea:'x',mechanism:'x',vocabulary:'x',priority:'x',confirm:true},B:{materials:'x',rules:'x',learning:'x',ending:'x',rationale:'x',transcript:'x',model:'DeepSeek',word_count:680,settings_confirmed:true,word_count_confirmed:true,confirm:true},C:{crit1_problem:'x',crit1_reason:'x',crit1_proposal:'x',crit2_problem:'x',crit2_reason:'x',crit2_proposal:'x',confirm:true},D:{materials:'x',rules:'x',learning:'x',ending:'x',rationale:'x',transcript:'x',word_count:690,same_conversation:true,word_count_confirmed:true,confirm:true},E:{crit1_handling:'alternative',crit1_evidence:'x',crit2_handling:'as_proposed',crit2_evidence:'x',confirm:true},F:{main_change:'x',source:'x',rejected:'none',confirm:true}};for(const p of P.PHASES)P.commit(s,p,templates[p]);return s;}
+assert.deepEqual(P.validateStage('A',{}).includes('confirm'),true);
+const a=P.start();assert.throws(()=>P.commit(a,'B',{}),/order/);
+const s=dummy();assert.equal(P.complete(s),true);assert.equal(s.phase_index,6);assert.equal(s.events.filter(e=>e.type==='stage_submitted').length,6);
+const x=P.buildPacket([s]);assert.equal(x.packet.items.length,1);assert.deepEqual(Object.keys(x.packet.items[0].v2).sort(),['ending','learning','materials','rationale','rules']);const pub=JSON.stringify(x.packet);assert.equal(pub.includes(s.session_id),false);assert.equal(pub.includes('crit1_'),false);assert.equal(pub.includes('transcript'),false);assert.equal(pub.includes('idea'),false);assert.equal(JSON.stringify(x.private_map).includes(s.session_id),true);
+assert.throws(()=>P.buildPacket([s,s]),/Duplicate/);
+assert.equal(P.scoreValid('3'),true);assert.equal(P.scoreValid('0'),false);assert.equal(P.scoreValid('5.5'),false);
+assert.equal(P.csv([['=SUM(A1:A3)','hello,world']]),"'=SUM(A1:A3),\"hello,world\"");
+console.log('PASS: stage order, required fields, session closure, anonymized packet, mapping separation, duplicate IDs, score bounds, CSV injection protection.');
