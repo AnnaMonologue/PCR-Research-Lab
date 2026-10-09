@@ -9,3 +9,14 @@ node_modules/
 participant_exports/
 private_data/
 __pycache__/
+
+# Cloudflare local-only files / 不提交云端本地密钥
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+.wrangler/
+cloudflare/wrangler.jsonc
+cloudflare/.env
+cloudflare/.env.*
+*.sqlite
+*.sqlite3
