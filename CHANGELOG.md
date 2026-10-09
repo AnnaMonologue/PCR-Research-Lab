@@ -27,3 +27,11 @@
 - Documented Cloudflare Workers + D1 + Secrets and admin/participant separation. / 新增 Cloudflare 云端架构、密钥和角色隔离方案。
 - Added D1 schema draft, fail-closed mock-only Worker, bilingual governance and release checklist. / 新增 D1 草案、默认拒绝真实接口的 Worker、数据治理与验收清单。
 - Kept actual recruitment, server-backed auth and live AI relay disabled pending implementation and review. / 真实招募、服务端认证和在线 AI 调用仍未开放。
+
+
+## v0.3.0 — Cloudflare mock-only sandbox / Cloudflare 虚构沙盒
+- Added D1-backed staged researcher-issued synthetic invitations, one-time activation and short-lived Secure/HttpOnly session cookies. / 新增虚构发码、一次激活及安全会话。
+- Server-authoritative A–F progression, B/D mock chat, quotas and replay checks. / 服务端控制阶段、模拟 AI、额度和重复请求。
+- Separate bilingual synthetic participant UI, CLI administration, anonymised V2 packet. / 双语参与者端、研究者命令行与盲评包。
+- Integration tests in Node 22 in-memory SQLite; Github Actions Node test workflow. / 内存 SQLite 自动化测试与 CI。
+- **Not deployed, no real data, no real DeepSeek provider calls. / 尚未部署、没有真实资料或模型调用。**
