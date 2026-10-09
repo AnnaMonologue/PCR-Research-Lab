@@ -64,3 +64,23 @@
 5. Distinguish *mock/synthetic* (测试数据) from actual participant observations. / 测试数据与真实实证记录必须分开。
 6. For new technical or methodological terms, update this glossary **before** updating bilingual UI or documentation; record contested alternatives explicitly. / 新增专业术语，先入库再进入界面或文档。
 
+
+
+## C. Cloudflare research platform / 云平台与安全术语
+
+| 中文（固定译名） | English (canonical) | 用法与边界 / Definition & boundaries |
+|---|---|---|
+| 服务端密钥 / 机密绑定 | Workers Secrets | 服务端保存模型 API Key；不能通过网页返回。 / Server-only API credential storage. |
+| 假名化参与者编号 | Pseudonymous participant ID | 用于研究记录关联，但不直接暴露姓名；不等于匿名。 / Linkable identifier, **not** full anonymity. |
+| 一次性临时访问码 | Single-activation access code | 研究者向一名参与者发放的高熵登录凭证。 / Researcher-issued expiring secret. |
+| 基于密钥的哈希消息认证码 | HMAC (Hash-based Message Authentication Code) | 用来校验访问码；只在数据库保存摘要，独立密钥留在服务端。 / Verify codes without storing plaintext. |
+| 会话 Cookie | Session cookie | 服务端授权的一次登录；须有到期和撤销策略。 / Server-issued scoped session. |
+| 身份映射表 | Re-identification map | 真实身份与假名编号的私有对应表，单独管理。 / Private ID-to-person mapping. |
+| 服务端阶段状态机 | Server-authoritative stage state machine | 服务器验证 A→F，不能只信浏览器。 / Backend enforces phase transitions. |
+| 幂等性键 | Idempotency key | 避免用户重试造成同一次模型请求重复入账或重复记录。 / Deduplicate retries. |
+| 数据库静态加密 | Encryption at rest | D1 由 Cloudflare 托管密钥执行加密；不等于端到端加密。 / Provider-managed storage protection, not E2EE. |
+| 传输加密 | Encryption in transit | HTTPS/TLS 保护网络传输，不消除模型服务商的数据处理。 / TLS, not downstream deletion. |
+| 研究伦理审批 | Research ethics approval | 正式招募及真实数据采集的前置条件。 / Prerequisite for human-participant collection. |
+| 数据最小化 | Data minimisation | 仅收集研究问题所需的数据。 / Collect only necessary data. |
+| 数据保留期限 | Data retention schedule | 在同意书和协议中明确保留/删除。 / Defined retention and deletion policy. |
+| 人工发放访问码 | Researcher-mediated enrollment | 研究者审核并发送编号/访问码，参与者无需获得 API Key。 / Private issuing workflow. |
