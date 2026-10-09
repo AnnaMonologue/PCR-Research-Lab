@@ -1,12 +1,13 @@
 {
   "name": "pcr-research-lab",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "private": true,
-  "description": "APIC 2026 Prompt–Critique–Refinement instrument research prototype with local-only DeepSeek relay",
+  "description": "PCR bilingual synthetic offline walkthrough; optional Cloudflare and DeepSeek integration interfaces reserved",
   "scripts": {
     "start": "node server.js",
     "test": "node --test tests/*.test.js cloudflare/src/worker.test.mjs && node tests.js",
-    "test:cloudflare": "node --test cloudflare/src/worker.test.mjs"
+    "test:cloudflare": "node --test cloudflare/src/worker.test.mjs",
+    "test:offline": "node --test tests/offline-demo.test.js"
   },
   "engines": {
     "node": ">=20"
