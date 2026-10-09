@@ -26,3 +26,15 @@
 - [ ] Independent security review before public recruitment / 独立安全验收
 
 **STOP / 停止条件：** Until Stages 1–2 are complete, no real participant or API Key should enter the internet-facing sandbox. / 第一、二阶段未完成前，不得在线收集真实参与者数据，也不得给测试沙盒配置可用于公开调用的模型密钥。
+
+
+## Legacy Word data import / 原始 Word 导入闸门
+
+- [x] Bilingual field mapping and synthetic-only import shape / 双语映射、仅虚构导入结构
+- [x] Historical manually copied transcript provenance distinct from API native logs / 手工复制与原生日志分隔
+- [ ] Researcher confirms private folder-to-analytic-case crosswalk / 研究者核实私有案例对应
+- [ ] Manual Word layout and media review, including alternative templates / 对表格变体与媒体进行人工检查
+- [ ] Eligibility/consent and study data-use permissions checked privately / 私有核实研究许可
+- [ ] Private de-identification and import validation before any actual conversion / 真实转换前去标识化和验证
+
+**STOP / 停止：** Historical actual submissions are NOT Cloudflare sandbox fixtures. / 历史真人数据不能拿来当 Cloudflare 测试数据。
