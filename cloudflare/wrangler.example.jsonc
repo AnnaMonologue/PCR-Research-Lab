@@ -1,0 +1,20 @@
+{
+  // DESIGN TEMPLATE ONLY / 仅为设计模板
+  // Do not deploy for real data collection / 不得直接用于真实招募
+  "name": "pcr-research-lab-sandbox",
+  "compatibility_date": "2026-10-09",
+  "main": "./src/worker.mjs",
+  "vars": {
+    "AI_PROVIDER": "mock",
+    "ENVIRONMENT": "sandbox",
+    "REAL_PARTICIPANT_COLLECTION_ENABLED": "false"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "pcr-research-lab-sandbox",
+      "database_id": "REPLACE_WITH_YOUR_OWN_D1_DATABASE_ID"
+    }
+  ]
+  // Never place sensitive values in vars / 不可在此填写 API Key 或登录密钥。
+}
