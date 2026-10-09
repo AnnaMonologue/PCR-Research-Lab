@@ -19,6 +19,10 @@
 
 **GitHub Actions / GitHub 自动检查:** The GitHub workflow is configured as `workflow_dispatch` (manual only). Its remote execution is not independently confirmed by this report. / GitHub Actions 保持手动触发，不将本地测试结果冒充远程 CI。
 
+## Additional regression / 补充回归测试
+
+An extended browser test found that the optional third critique was correctly displayed in E but skipped by the sample-fill button. The E-stage sample was fixed and retested. The browser test now covers: optional C3 → E3 disposition, all A–F stages, B/D mock conversation, blinded packet download, separate J01/J02 JSON rating exports, and the complete fictional-record export. / 扩展测试发现并修复第三条可选批评的模拟填充问题，重新测试了六阶段和三类 JSON 导出。
+
 ## Outstanding (not part of this demo) / 非当前原型范围
 
 Actual user authentication, paid API metering, Cloudflare deployment, secure research database, ethics approval, live recruitment and construct validity are intentionally not claimed or required. / 不声明已完成安全认证、正式云端部署、真实数据采集或效度验证。
