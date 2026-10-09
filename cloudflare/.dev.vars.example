@@ -1,0 +1,4 @@
+# ONLY local synthetic mock test / 仅限本地虚构 Mock 测试
+# Generate independent random secrets (>=32 chars) and never commit actual .dev.vars.
+ACCESS_CODE_HMAC_SECRET=REPLACE_WITH_A_FRESH_RANDOM_SECRET_OF_AT_LEAST_32_CHARACTERS
+RESEARCHER_DEMO_TOKEN=REPLACE_WITH_ANOTHER_FRESH_RANDOM_SECRET_OF_AT_LEAST_32_CHARACTERS
