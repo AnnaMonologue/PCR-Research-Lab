@@ -69,3 +69,17 @@ Do not upload raw prompts. Match browser export and server log by `session_id` b
 ## 6. Future enrollment data / 未来访问码数据（未实现）
 
 The proposed design adds `participant_id`, a **salted hash** of a one-time code, code expiry, scoped session metadata and usage counters. It will not export the plaintext access code or DeepSeek API key. / 未来登记册拟增加参与者编号、一次性码盐化哈希、有效期、会话权限与配额；绝不导出访问码明文或 DeepSeek 密钥。详见 [`docs/PARTICIPANT_ACCESS.md`](docs/PARTICIPANT_ACCESS.md)。
+
+
+## 7. Legacy APIC source mapping / 历史材料映射
+
+The historical submission format is distinct from future in-app API telemetry. / 原 APIC 人工 Word 提交资料与未来 API 原生日志严格分开。
+
+| 来源 / Original source | 字段 / Structured field | 关键限制 / Boundary |
+|---|---|---|
+| A–F Word submissions / 参与者提交表 | `stage_data.A`–`stage_data.F` | Blank fields remain `null`; missing optional third critique is `not_applicable`. / 缺失不得填造 |
+| Dialogue template “A. 形成 V1” | `ai_transcript.B` | Manually copied, not API captured. / 参与者手动复制，映射到 PCR B |
+| Dialogue template “B. 修订 V2” | `ai_transcript.D` | Manually copied, not API captured. / 参与者手动复制，映射到 PCR D |
+| Original product ratings / 原评审评分 | independent judge record / 独立评审记录 | Only blinded V2; no private crosswalk. / 禁止评审获取身份映射 |
+
+See [bilingual legacy import specification](docs/LEGACY_APIC_IMPORT_SPEC.md) and [synthetic fixture](samples/SYNTHETIC_legacy_apic_record.json). / 详见双语字段规范与虚构样例。
