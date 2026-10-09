@@ -19,7 +19,7 @@
 - A（独立构思）→ B（AI 辅助 V1）→ C（独立批评）→ D（AI 辅助 V2）→ E（批评处理说明）→ F（事后解释）。 / Staged six-phase workflow.
 - B/D each require a mock conversation turn; C requires two complete critiques, with an optional third. / B/D 各需一次模拟对话；C 两条必填批评，一条选填。
 - E requires a corresponding response for every submitted critique. / E 必须逐条回应批评。
-- V1/V2 retain the **declared** 600–800-character requirement; the prototype does not perform Word-equivalent character counting. / 字数由测试用户填写声明，不宣称实现 Word 完全一致的统计。
+- V1/V2 retain the **self-declared** 600–800-character requirement; the prototype does not perform Word-equivalent character counting. / 字数由测试用户填写声明，不宣称实现 Word 完全一致的统计。
 - Reviewer gets V2 only; four 1–5 dimensions with 1/3/5 descriptions from original APIC materials. / 四维盲评及锚点保持原义。
 
 ## Cloudflare and DeepSeek adapters / 云端与模型接口预留
