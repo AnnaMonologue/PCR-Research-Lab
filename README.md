@@ -108,51 +108,19 @@ The publicly visible repository does not automatically grant reuse rights; no op
 
 **Citation / 研究依据：** Shen, Y. (2026). *Shifting Assessment Focus: Managing Behaviour and Measuring Innovation Performance in Human–AI Co-creation* (APIC 2026). / 本项目采用作者已完成的研究设计作为原型依据，任何新增实证结论需另行验证。
 
+## 11. Cloudflare v0.3 mock sandbox / Cloudflare v0.3 模拟沙盒（本地实现，未上线）
 
-## 9. Cloudflare v0.3 proposal / Cloudflare v0.3 设计（尚未部署）
+**中文：** 已建立独立 Cloudflare Worker + D1 数据模型，包含随机虚构访问码签发、单次激活、HttpOnly Cookie、服务端 A–F 阶段锁定、B/D Mock AI 对话、调用额度、撤销和匿名 V2 包导出。参与者测试网页位于 `cloudflare/public/`。**不需要原 APIC 真实参与者记录，不调用真实 DeepSeek，不允许真实受试者进入。**
 
-**中文：** 计划将本地技术演示与未来线上研究隔离。Cloudflare Workers + D1 + Workers Secrets 将支持有权限的研究者发码、参加者 A–F 阶段验证、B/D 的 DeepSeek 调用、用量限制和数据审计；目前这些线上研究功能还没有实现。绝不向参与者提供主 API Key 或解密密码，参与者只领取本人编号及临时访问码。Cloudflare 和 DeepSeek 属于第三方服务，正式研究前必须审查伦理、保留和跨境处理要求。
+**English:** A separate mock-only Cloudflare Worker + D1 sandbox now implements synthetic invitation issuance, single-use activation, scoped HttpOnly sessions, server-validated A–F steps, B/D mock chat, quotas, revocation and blinded V2 export. The standalone participant UI lives in `cloudflare/public/`. **No authentic APIC records, actual DeepSeek calls or real human participants.**
 
-**English:** A future Cloudflare Workers + D1 + Workers Secrets deployment would provide researcher-issued expiring participant codes, server-enforced A–F stages, B/D model relay, quotas and audit trails. These features are **design-stage only**. Participants never receive a provider key or its decryption password. Cloudflare and DeepSeek are third parties; ethics, retention, access controls and data transfers require review before real recruitment.
+This is **locally tested code**, not a deployed Cloudflare application or a secure production study. / 目前是**已通过本地自动测试的代码**，尚未部署到 Cloudflare，也不构成正式研究系统。
 
-- [Cloudflare architecture / 云端架构](docs/CLOUDFLARE_ARCHITECTURE.md)
-- [Research data governance / 研究数据治理](docs/RESEARCH_DATA_GOVERNANCE.md)
-- [Release checklist / 发布验收闸门](docs/RELEASE_CHECKLIST.md)
-- [D1 design schema / 数据库结构草案](cloudflare/schema.sql)
-- [Fail-closed sandbox Worker / 默认关闭研究接口的沙盒骨架](cloudflare/src/worker.mjs)
+- [Cloudflare v0.3 README / 本地模拟沙盒使用说明](cloudflare/README.md)
+- [Mock Worker / 模拟服务器](cloudflare/src/worker.mjs)
+- [Integration tests / SQLite 内存集成测试](cloudflare/src/worker.test.mjs)
+- [Synthetic test webpage / 虚构参与者网页](cloudflare/public/index.html)
 
-**Local scaffold tests / 沙盒骨架测试：** `node --test cloudflare/src/worker.test.mjs`. A successful test does not authorise deployment with human participants. / 测试通过不代表已经具备真实研究条件。
+To run current automated checks / 运行自动化检查：`npm test`.
 
-
-## 10. Compatibility check and synthetic E2E / 历史材料兼容性与虚构全流程测试
-
-**中文：** 已取消真实 APIC Word 数据导入器。历史研究资料仅在私有本地环境中只读参照，用于核对网页 A–F 阶段、任务指令与评分量规是否保留原意。**真实数据不转换、不上传、不回放成新系统日志**。实际运行测试使用虚构参与者、模拟 AI 回应和虚构作品，避免重用原研究中的个人资料。
-
-**English:** The historical Word importer has been **cancelled**. Original APIC documents serve as private, read-only reference material for interface/protocol checks. No authentic records are converted, uploaded or replayed as new telemetry. Synthetic participants and mock AI responses drive functional tests.
-
-- [QA Strategy / 测试策略](docs/TEST_STRATEGY.md)
-- [Original source field reference (archive only) / 原始字段对照（仅供参考）](docs/LEGACY_APIC_IMPORT_SPEC.md)
-- [Fictional test fixture / 完全虚构的测试案例](samples/SYNTHETIC_legacy_apic_record.json)
-- [QA tracking Issue #5 / 测试任务](https://github.com/AnnaMonologue/PCR-Research-Lab/issues/5)
-
-**Status / 当前状态：** Existing local mock tests pass; full browser end-to-end and Cloudflare enrollment tests are outstanding. / 本地 Mock 自动化检查已通过，但完整浏览器测试、云端发码和权限测试仍待实现。
-
-
-## 11. Cloudflare v0.3 mock sandbox / v0.3 Cloudflare 虚构实验沙盒
-
-**中文：** 新增独立的 Cloudflare Worker + D1 研究装置演示，包含**虚构参与者**临时访问码发放、一次性激活、HttpOnly 会话、服务端 A–F 阶段校验、B/D Mock AI 对话及跨阶段上下文、调用额度、撤销与匿名 V2 评审包。中英双语参与者页面位于 `cloudflare/public/`。
-
-**English:** A separate Cloudflare Worker + D1 sandbox implements researcher-issued codes for **synthetic participants**, single-use activation, short-lived HttpOnly sessions, server-enforced A–F progression, B/D mock AI dialogue across stages, per-person quotas, revocation and blinded V2 packet export. The bilingual participant interface is in `cloudflare/public/`.
-
-**Verified locally / 本地验证：** 17 Node tests passed; original PCR structural checks passed. These run against Node 22's in-memory SQLite adapter and **have not been validated against Cloudflare-hosted D1**. / 通过 Node 22 内存 SQLite 的 17 项自动化检查，尚未验证远程 Cloudflare D1。
-
-**Release conditions / 上线边界：** No DeepSeek API calls, no genuine participant materials, no real recruitment. Cloudflare Access researcher authentication, resilient rate limiting, approved privacy/ethics arrangements and browser E2E tests remain outstanding. / 不调用真实模型、不处理真人资料、不开展真人招募；正式权限与伦理验收尚未完成。
-
-- [Cloudflare sandbox runbook / 沙盒部署与操作说明](cloudflare/README.md)
-- [Sandbox Worker / 沙盒 Worker](cloudflare/src/worker.mjs)
-- [Bilingual participant UI / 双语参与者界面](cloudflare/public/index.html)
-- [Integration tests / 服务端集成测试](cloudflare/src/worker.test.mjs)
-- [GitHub Actions CI / 自动化测试](.github/workflows/tests.yml)
-- [Implementation tracker / v0.3 开发跟踪](https://github.com/AnnaMonologue/PCR-Research-Lab/issues/2)
-
-**Stage distinction / 状态区别：** Code committed to GitHub ≠ Cloudflare deployment ≠ approved human-subject study. / GitHub 源码提交、Cloudflare 部署和获批正式研究是三个不同阶段。
+**Release blocker / 上线阻断项：** Cloudflare Access researcher identity, durable abuse protection, backup/recovery, Cloudflare-hosted D1 validation, formal privacy and ethics approval. / 研究者身份校验、滥用防护、备份、真实 Cloudflare D1 验证及伦理审查尚未完成。
