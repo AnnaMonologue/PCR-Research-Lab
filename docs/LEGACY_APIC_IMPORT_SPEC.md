@@ -1,6 +1,6 @@
-# 原 APIC 字段到 PCR Research Lab 的映射 / Legacy APIC Import Specification
+# 原 APIC 与网页字段对照（只读参考） / Legacy APIC-to-UI Field Reference (Read-only)
 
-**设计规范 v0.3 / Design specification v0.3** · **NO ACTUAL PARTICIPANT DATA IN THIS REPOSITORY / 本仓库不含真实参与者数据**.
+**SUPERSEDED / 已停止导入计划 (2026-10-09):** This document is **reference-only**. Historical data conversion and bulk import are cancelled. Real records stay private and read-only. / 本文仅用于人工核对，历史真实记录不转换、不导入。详见 [testing strategy / 测试策略](TEST_STRATEGY.md)。
 
 ## Evidence provenance / 证据来源
 
@@ -38,4 +38,4 @@
 - [SYNTHETIC example / 完全虚构样例](../samples/SYNTHETIC_legacy_apic_record.json)
 - [Automated structure checks / 结构校验测试](../tests/legacy-import.test.js)
 
-**Conversion status / 转换状态:** specification and synthetic sample only. / 当前仅完成规范和虚构样例；未把历史 Word 批量导入 Cloudflare。
+**Scope / 范围：** The schema and synthetic sample are legacy engineering examples only; no real-data importer will be developed or run. / JSON 结构与虚构样例仅为历史工程参考，不开发真人数据导入器。
