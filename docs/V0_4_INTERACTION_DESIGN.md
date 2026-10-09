@@ -15,7 +15,7 @@
 7. In C, critiques 1 and 2 are mandatory: C1 addresses vocabulary learning or feedback, C2 addresses play mechanics, feasibility or rules; critique 3 is optional and all-or-none if started. No AI access. / C 前两项必填、第三项选填；无 AI。
 8. In E, show each original C critique read-only; participant selects the original five-category handling status **and independently writes** what changed in V2 or why it was not adopted. Include C3 only if completed. No AI access. / E 自动引用 C 的问题，但处理说明由参与者本人填写。
 9. Judge workflow: review all blinded V2 works before scoring; rate each on four original 1–5 dimensions with original 1/3/5 anchors; **per-design short rating note OPTIONAL**, not required. The judge cannot see process data, participant identities or another judge's scores. / 单份评分备注**选填**，保留原量规和盲评隔离。
-10. After **all** designs are rated, show a new **Overall Rating Rationale / 总体评分说明** page. This is explicitly a **prototype extension**, not a field in the original APIC judge form. Then show the **three original judge submission confirmations** and export/finish. / 全部评分后新增总体说明页，最后保留原表三项确认。
+10. After **all** designs are rated, show an **Overall Rating Rationale / 总体评分说明** page recording the judge’s overall considerations in writing. According to the researcher, the original APIC judges also gave overall impressions **orally**, but those remarks were not transcribed into the original rating forms. This interface documents that part of the workflow, then presents the **three original judge submission confirmations** before export/finish. / 全部评分后填写总体评分说明。研究者确认原研究中评审曾口头交流整体评价感受，但未录入原始评分表；新版将该交流内容规范为书面填写，随后保留原表三项确认。
 
 ## 2. Participant journey / 参与者页面顺序
 
@@ -74,10 +74,10 @@ Show C critique verbatim as read-only reference. Required free-text evidence rem
 | J1 Browse all blinded V2 / 先通读 | Scrollable list/read-only designs; only V2, no process materials or other judges' scores. / 先通读匿名作品 |
 | J2 Rate each / 逐份评分 | Four independent integer ratings 1–5; show the **original** 1/3/5 anchors and 2/4 intermediate interpretation. **Optional** `rating_note` per design. / 四项必须打分，单份简短备注选填 |
 | J3 Audit all scores / 评分核查 | Summary table of all blinded IDs, four rating status columns, ability to revisit before final lock. / 漏评阻断提交 |
-| J4 Overall rating rationale / 总体评分说明（原型新增） | **Required concise free-text** response describing main cross-design scoring criteria, what patterns/features most influenced judgments, and any uncertainty or difficult decisions (allow “none” for uncertainty). No model-generated explanation. / 全部评分后填写总体评分依据、重点和不确定性（无可写“无”） |
+| J4 Overall rating rationale / 总体评分说明 | **Required concise free-text** response recording the judge's overall criteria, influential patterns/features and uncertainty (allow “none” for uncertainty). Standardises written recording of overall impressions formerly shared orally; no model-generated explanation. / 全部评分后书面记录总体评分依据、重点和不确定性（无可写“无”），对应原研究曾口头提供的总体评价。 |
 | J5 Original final confirmations / 原表提交确认 | Three independent checks: reviewed all works and rated independently; did not discuss or view other judge's scores; verified all four dimensions are integers 1–5. Then export and finish. / 原始三项确认后结束 |
 
-**Method note / 方法备注:** Original APIC judge forms require four scores per design and have a `简短备注（选填）` column, followed by three submission checks; they **do not contain** an overall rating-rationale page. The latter is explicitly added for prototype demonstration and should not be retroactively described as an APIC measurement. / 新增总体评分说明仅属于新版原型。
+**Method/provenance note / 方法与来源说明：** Original APIC judge forms required four scores per design and included an optional `简短备注（选填）` plus three submission checks. They did **not** have a written overall-rating field. The researcher reports that the judges also shared overall impressions orally during the original study, without recording them in the forms. v0.4 makes this previously oral feedback a structured **written** step. Do not attribute text entered in the new interface to the historical judges or claim their past verbal feedback was transcribed verbatim. / 原表无总体评分文字栏；据研究者说明，原研究评审曾口头表达总体感受而未记入表格。新版只是将这部分规范化为书面记录，不追认历史评审已经提交相同的书面数据，也不伪造原话。
 
 ## 7. Implementation and QA acceptance / 实施与验收标准
 
@@ -89,7 +89,7 @@ Show C critique verbatim as read-only reference. Required free-text evidence rem
 - [ ] No AI prompts may be sent from A/C/E/F; C locked before D; E written by participant. / AI 禁用与阶段锁定。
 - [ ] Judge reviews all works, scores all four dimensions, per-design rating note **optional**, overall rationale **required**, three original confirmations. / 评分备注选填，总体说明必填。
 - [ ] Blinded reviewer packet hides all process logs, participant ID and private crosswalk; reviewer cannot inspect another judge's scores within its assigned view. / 盲评隔离。
-- [ ] Export JSON marks data SYNTHETIC, Mock AI, UI-defined count algorithm and any prototype-only fields; no genuine APIC cases. / 来源明示。
+- [ ] Export JSON marks data SYNTHETIC, Mock AI, UI-defined count algorithm and any newly structured written-feedback fields; no genuine APIC cases. / 来源明示。
 - [ ] Run complete tests **once after all code changes**, fix failures and re-run until green; GitHub Actions stays manual-only to prevent notification spam. / 全部修改完成再集中测试、修错到通过，不恢复自动 Actions 通知。
 
 ## 8. Boundaries / 适用限制
