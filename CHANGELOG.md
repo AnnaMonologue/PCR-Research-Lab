@@ -16,3 +16,7 @@
 ## v0.1.0 — Original prototype / 初始原型
 
 - Digitised the APIC 2026 PCR task, data export and blinded judge packet. / 将 APIC 2026 原实验流程、数据导出和匿名评审包转为网页工具。
+
+### Scoring-rubric preservation / 原始量规复核
+
+- Replaced earlier abbreviated anchors with the twelve original Chinese 1/3/5 descriptors, followed by faithful English translations; added regression tests for all four dimensions. / 将早期界面中缩写的十二条评分锚点恢复为原始中文全文并配上英文译文，新增四维量规回归测试。

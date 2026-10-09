@@ -8,16 +8,16 @@
   const VERSION = '0.2.1';
   const PHASES = ['A','B','C','D','E','F'];
   const DIMENSIONS = [
-    {key:'global_innovation',label:'整体创新表现 / Global innovation',q:'整体框架的新意及目标、玩法、互动、反馈整合 / Novelty and coherence of integrated objectives, activities, interaction and feedback'},
-    {key:'originality',label:'独创性 / Originality',q:'核心玩法、规则或 12 词使用方式的区别性 / Distinctiveness of mechanics, rules or vocabulary use'},
-    {key:'educational_usefulness',label:'教育用途 / Educational usefulness',q:'是否有主动词汇练习和清楚、及时的反馈 / Active vocabulary practice and clear, timely feedback'},
-    {key:'feasibility_task_fit',label:'可行性与任务适配 / Feasibility and task fit',q:'是否符合 15 分钟、12 词、30 元等要求并可执行 / Practical fulfilment of time, vocabulary and cost constraints'}
+    {key:'global_innovation',label:'整体创新表现 / Global innovation',q:'整体框架是否有新意且连贯 / Is the overall game design novel and coherent?'},
+    {key:'originality',label:'独创性 / Originality',q:'核心玩法、规则或 12 词使用方式是否有区别性 / Are the mechanics, rules or ways of using the twelve words distinctive?'},
+    {key:'educational_usefulness',label:'教育用途 / Educational usefulness',q:'词汇练习与反馈是否清楚有效 / Are vocabulary practice opportunities and feedback clear and effective?'},
+    {key:'feasibility_task_fit',label:'可行性与任务适配 / Feasibility and task fit',q:'是否符合要求并可实际执行 / Does the design satisfy the task constraints and remain practically implementable?'}
   ];
   const ANCHORS = {
-    global_innovation:['缺少新意，或目标、玩法、互动与反馈缺乏连贯整合 / Limited novelty or weak integration of objectives, mechanics, interaction and feedback','基本连贯且有一定新意，但整合或发展程度一般 / Some novelty and coherence, but limited integration or development','各部分有机整合为新颖、连贯、易理解的方案 / Novel, coherent and understandable integration of all elements'],
-    originality:['玩法、规则或词汇使用方式缺少明显区别性 / Mechanics, rules or vocabulary use show little distinctiveness','具有一定区别性，但仍有限 / Some distinctiveness, but limited','具有明显区别性，呈现清楚的新意 / Clear distinctiveness and originality'],
-    educational_usefulness:['主动练习、回忆或反馈薄弱或不清楚 / Weak or unclear active practice, recall or feedback','有一定练习和反馈，但存在明显缺口 / Some practice and feedback, with significant gaps','有主动辨认、回忆或使用词汇的机会，反馈及时清楚 / Active identification, recall or use of words with clear, timely feedback'],
-    feasibility_task_fit:['明显不符合多项要求，或无法执行 / Violates multiple task constraints or cannot be implemented','基本符合要求，但有明显问题 / Mostly meets constraints but has significant issues','完全符合任务要求且流程清楚可执行 / Fully meets task constraints and can be clearly implemented']
+    global_innovation:['整体方案缺少新意，或学习目标、玩法、互动与反馈之间缺少连贯整合。 / The design has little novelty or lacks coherent integration of learning goals, mechanics, interaction and feedback.','整体方案基本连贯并有一定新意，但各部分的整合或发展程度一般。 / The design is generally coherent with some novelty, but its components show only moderate integration or development.','学习目标、玩法、互动与反馈被有机整合为一个整体上新颖、连贯且易理解的方案。 / Learning goals, mechanics, interaction and feedback form a novel, coherent and understandable design.'],
+    originality:['核心玩法、规则设计或 12 个词的使用方式缺少明显区别性。 / The core mechanics, rules or use of the twelve words show little distinctiveness.','核心玩法、规则设计或 12 个词的使用方式具有一定区别性，但仍较有限。 / The core mechanics, rules or use of the twelve words show some, but limited, distinctiveness.','核心玩法、规则设计或 12 个词的使用方式具有明显区别性，呈现出清楚的新意。 / The core mechanics, rules or use of the twelve words show clear distinctiveness and novelty.'],
+    educational_usefulness:['主动练习、回忆或反馈机制薄弱或不清楚。 / Opportunities for active practice or recall, or the feedback mechanisms, are weak or unclear.','提供了一定练习与反馈，但存在明显缺口。 / Some practice and feedback are provided, but important gaps remain.','清楚提供主动辨认、回忆或使用词汇的机会，并有及时、可理解的反馈。 / The design clearly enables active word recognition, recall or use, with timely and understandable feedback.'],
+    feasibility_task_fit:['明显不符合多项任务要求，或无法按所述流程执行。 / The design clearly violates several task requirements or cannot be carried out as described.','基本符合任务要求，但仍存在一项或多项明显问题。 / The design broadly meets the task requirements, but one or more evident problems remain.','完全符合任务要求，并能按所述流程清楚执行。 / The design fully meets task requirements and can be implemented clearly as described.']
   };
   const WORDS = [['makan','吃'],['minum','喝'],['buku','书'],['kelas','课堂／班级'],['kawan','朋友'],['rumah','家'],['kedai','商店'],['bas','公交车'],['pagi','早晨'],['malam','夜晚'],['cepat','快'],['lambat','慢']];
   function id(prefix='PCR'){const n=(typeof crypto!=='undefined' && crypto.randomUUID ? crypto.randomUUID().replace(/-/g,'').slice(0,12) : Math.random().toString(36).slice(2,14)).toUpperCase();return `${prefix}-${n}`;}
