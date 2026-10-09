@@ -1,0 +1,307 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PCR legacy APIC 2026 import / PCR 历史研究资料导入",
+  "description": "Provenance-preserving draft; not a participant dataset. / 保留来源的草案，不包含真实参与者数据。",
+  "type": "object",
+  "required": [
+    "schema",
+    "dataset_kind",
+    "source_type",
+    "case_ref",
+    "stage_data",
+    "ai_transcript",
+    "qc"
+  ],
+  "properties": {
+    "schema": {
+      "const": "pcr-legacy-import-v1"
+    },
+    "dataset_kind": {
+      "enum": [
+        "synthetic",
+        "restricted_legacy"
+      ]
+    },
+    "source_type": {
+      "const": "legacy_manual_docx"
+    },
+    "case_ref": {
+      "type": "string",
+      "minLength": 5
+    },
+    "stage_data": {
+      "type": "object",
+      "required": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ],
+      "properties": {
+        "A": {
+          "$ref": "#/$defs/ideation"
+        },
+        "B": {
+          "$ref": "#/$defs/design"
+        },
+        "C": {
+          "type": "object",
+          "required": [
+            "critique_units"
+          ],
+          "properties": {
+            "critique_units": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/critique"
+              }
+            }
+          }
+        },
+        "D": {
+          "$ref": "#/$defs/design"
+        },
+        "E": {
+          "type": "object",
+          "required": [
+            "dispositions"
+          ],
+          "properties": {
+            "dispositions": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/disposition"
+              }
+            }
+          }
+        },
+        "F": {
+          "type": "object",
+          "required": [
+            "main_change",
+            "source",
+            "rejected"
+          ],
+          "properties": {
+            "main_change": {
+              "$ref": "#/$defs/nullableText"
+            },
+            "source": {
+              "$ref": "#/$defs/nullableText"
+            },
+            "rejected": {
+              "$ref": "#/$defs/nullableText"
+            }
+          }
+        }
+      }
+    },
+    "ai_transcript": {
+      "type": "object",
+      "required": [
+        "B",
+        "D"
+      ],
+      "properties": {
+        "B": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/turn"
+          }
+        },
+        "D": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/turn"
+          }
+        }
+      }
+    },
+    "qc": {
+      "type": "object",
+      "required": [
+        "case_mapping_verified",
+        "source_document_reviewed",
+        "consent_status",
+        "field_status"
+      ],
+      "properties": {
+        "case_mapping_verified": {
+          "type": "boolean"
+        },
+        "source_document_reviewed": {
+          "type": "boolean"
+        },
+        "consent_status": {
+          "enum": [
+            "unverified",
+            "verified_in_private_registry"
+          ]
+        },
+        "field_status": {
+          "type": "object",
+          "additionalProperties": {
+            "enum": [
+              "present",
+              "missing",
+              "not_applicable",
+              "unreadable",
+              "unverified"
+            ]
+          }
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "nullableText": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ideation": {
+      "type": "object",
+      "required": [
+        "idea",
+        "mechanism",
+        "vocabulary",
+        "priority"
+      ],
+      "properties": {
+        "idea": {
+          "$ref": "#/$defs/nullableText"
+        },
+        "mechanism": {
+          "$ref": "#/$defs/nullableText"
+        },
+        "vocabulary": {
+          "$ref": "#/$defs/nullableText"
+        },
+        "priority": {
+          "$ref": "#/$defs/nullableText"
+        }
+      }
+    },
+    "design": {
+      "type": "object",
+      "required": [
+        "materials",
+        "rules",
+        "learning",
+        "ending",
+        "rationale"
+      ],
+      "properties": {
+        "materials": {
+          "$ref": "#/$defs/nullableText"
+        },
+        "rules": {
+          "$ref": "#/$defs/nullableText"
+        },
+        "learning": {
+          "$ref": "#/$defs/nullableText"
+        },
+        "ending": {
+          "$ref": "#/$defs/nullableText"
+        },
+        "rationale": {
+          "$ref": "#/$defs/nullableText"
+        }
+      }
+    },
+    "critique": {
+      "type": "object",
+      "required": [
+        "unit_local_id",
+        "problem",
+        "reason",
+        "proposed_response"
+      ],
+      "properties": {
+        "unit_local_id": {
+          "type": "string"
+        },
+        "problem": {
+          "$ref": "#/$defs/nullableText"
+        },
+        "reason": {
+          "$ref": "#/$defs/nullableText"
+        },
+        "proposed_response": {
+          "$ref": "#/$defs/nullableText"
+        }
+      }
+    },
+    "disposition": {
+      "type": "object",
+      "required": [
+        "unit_local_id",
+        "handling",
+        "evidence"
+      ],
+      "properties": {
+        "unit_local_id": {
+          "type": "string"
+        },
+        "handling": {
+          "enum": [
+            "implemented_as_proposed",
+            "implemented_differently",
+            "reasoned_not_adopted",
+            "unaddressed",
+            "unclear",
+            null
+          ]
+        },
+        "evidence": {
+          "$ref": "#/$defs/nullableText"
+        }
+      }
+    },
+    "turn": {
+      "type": "object",
+      "required": [
+        "role",
+        "content",
+        "source_provenance",
+        "native_api_timestamp",
+        "api_request_id"
+      ],
+      "properties": {
+        "role": {
+          "enum": [
+            "participant",
+            "ai"
+          ]
+        },
+        "content": {
+          "$ref": "#/$defs/nullableText"
+        },
+        "source_provenance": {
+          "const": "participant_copied_transcript"
+        },
+        "native_api_timestamp": {
+          "type": "null"
+        },
+        "api_request_id": {
+          "type": "null"
+        },
+        "media_reference": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}
