@@ -107,3 +107,18 @@ Tests check protocol stage order, export schema and blinded packet separation, r
 The publicly visible repository does not automatically grant reuse rights; no open-source license has been chosen. / 公开可见不代表自动授予自由复用许可；尚未选定开源许可证。
 
 **Citation / 研究依据：** Shen, Y. (2026). *Shifting Assessment Focus: Managing Behaviour and Measuring Innovation Performance in Human–AI Co-creation* (APIC 2026). / 本项目采用作者已完成的研究设计作为原型依据，任何新增实证结论需另行验证。
+
+
+## 9. Cloudflare v0.3 proposal / Cloudflare v0.3 设计（尚未部署）
+
+**中文：** 计划将本地技术演示与未来线上研究隔离。Cloudflare Workers + D1 + Workers Secrets 将支持有权限的研究者发码、参加者 A–F 阶段验证、B/D 的 DeepSeek 调用、用量限制和数据审计；目前这些线上研究功能还没有实现。绝不向参与者提供主 API Key 或解密密码，参与者只领取本人编号及临时访问码。Cloudflare 和 DeepSeek 属于第三方服务，正式研究前必须审查伦理、保留和跨境处理要求。
+
+**English:** A future Cloudflare Workers + D1 + Workers Secrets deployment would provide researcher-issued expiring participant codes, server-enforced A–F stages, B/D model relay, quotas and audit trails. These features are **design-stage only**. Participants never receive a provider key or its decryption password. Cloudflare and DeepSeek are third parties; ethics, retention, access controls and data transfers require review before real recruitment.
+
+- [Cloudflare architecture / 云端架构](docs/CLOUDFLARE_ARCHITECTURE.md)
+- [Research data governance / 研究数据治理](docs/RESEARCH_DATA_GOVERNANCE.md)
+- [Release checklist / 发布验收闸门](docs/RELEASE_CHECKLIST.md)
+- [D1 design schema / 数据库结构草案](cloudflare/schema.sql)
+- [Fail-closed sandbox Worker / 默认关闭研究接口的沙盒骨架](cloudflare/src/worker.mjs)
+
+**Local scaffold tests / 沙盒骨架测试：** `node --test cloudflare/src/worker.test.mjs`. A successful test does not authorise deployment with human participants. / 测试通过不代表已经具备真实研究条件。
