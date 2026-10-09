@@ -40,3 +40,18 @@
 - [ ] Cloudflare login/quotas/persistence E2E after implementation / 线上认证、额度、持久化功能待实现
 
 **STOP / 限制：** Original participant documents are read-only reference material, never Cloudflare test fixtures. / 真实原件不充当云端测试输入。See [QA strategy / 测试策略](TEST_STRATEGY.md).
+
+
+## v0.3 code completion / v0.3 代码完成情况（2026-10-09）
+- [x] Synthetic random enrolment and single activation / 虚构发码与一次激活
+- [x] Scoped, short-lived session cookies / 受限会话
+- [x] D1-shaped SQL and server-side A–F checks / D1 SQL 与阶段状态
+- [x] Mock B/D AI, context continuity, quotas, replay guard / 模拟 AI 对话、额度与防重复
+- [x] Revoke and blinded V2 export / 撤销与匿名导出
+- [x] Bilingual interface and automated Node 22 tests / 双语界面与自动化测试
+- [ ] Actual Cloudflare Wrangler + hosted D1 verification / 真实 Cloudflare 环境验证
+- [ ] Researcher identity via Cloudflare Access (current demo bearer token is insufficient) / 正式管理端认证
+- [ ] Brute-force protection, backups, privacy review, real-study consent / 安全与研究伦理
+- [ ] Full browser end-to-end and accessibility testing / 浏览器流程与无障碍测试
+
+**The current Worker fails closed if configured for live provider/research. / 如果启用真人研究或真实 AI 模式，当前 Worker 会拒绝执行。**
