@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PCR Research Lab · Offline Demonstration / 离线演示</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<header><div class="topline">PCR RESEARCH LAB <span>v0.3.1 · OFFLINE DEMO / 离线演示</span></div>
+<h1>Prompt–Critique–Refinement</h1><p>人机共创研究原型 / Human–AI Co-creation Research Prototype</p>
+<p class="warning">仅支持完全虚构的测试案例。无 Cloudflare、无 DeepSeek API、无真实身份验证、无真人研究数据。 / Synthetic-only: no Cloudflare, no DeepSeek, no secure authentication or real study data.</p></header>
+<nav aria-label="角色导航 / Role navigation"><button id="tab-admin" type="button">研究者 / Researcher</button><button id="tab-participant" type="button">参与者 / Participant</button><button id="tab-judge" type="button">评审 / Judge</button></nav>
+<main><div id="app" aria-live="polite"></div><p id="notice" role="status"></p></main>
+<footer>模拟数据仅保存在此浏览器的 localStorage，可随时清空。编号和访问码只用于演示流程，不具备真正的安全性。 / All data remain in local browser storage; demo codes offer no real security.</footer>
+<script src="../core.js"></script><script src="model.js"></script><script src="app.js"></script></body></html>
