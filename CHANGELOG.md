@@ -21,17 +21,9 @@
 
 - Replaced earlier abbreviated anchors with the twelve original Chinese 1/3/5 descriptors, followed by faithful English translations; added regression tests for all four dimensions. / 将早期界面中缩写的十二条评分锚点恢复为原始中文全文并配上英文译文，新增四维量规回归测试。
 
-
-## Cloudflare v0.3 architecture draft / Cloudflare v0.3 架构草案（未部署）
-
-- Documented Cloudflare Workers + D1 + Secrets and admin/participant separation. / 新增 Cloudflare 云端架构、密钥和角色隔离方案。
-- Added D1 schema draft, fail-closed mock-only Worker, bilingual governance and release checklist. / 新增 D1 草案、默认拒绝真实接口的 Worker、数据治理与验收清单。
-- Kept actual recruitment, server-backed auth and live AI relay disabled pending implementation and review. / 真实招募、服务端认证和在线 AI 调用仍未开放。
-
-
-## v0.3.0 — Cloudflare mock-only sandbox / Cloudflare 虚构沙盒
-- Added D1-backed staged researcher-issued synthetic invitations, one-time activation and short-lived Secure/HttpOnly session cookies. / 新增虚构发码、一次激活及安全会话。
-- Server-authoritative A–F progression, B/D mock chat, quotas and replay checks. / 服务端控制阶段、模拟 AI、额度和重复请求。
-- Separate bilingual synthetic participant UI, CLI administration, anonymised V2 packet. / 双语参与者端、研究者命令行与盲评包。
-- Integration tests in Node 22 in-memory SQLite; Github Actions Node test workflow. / 内存 SQLite 自动化测试与 CI。
-- **Not deployed, no real data, no real DeepSeek provider calls. / 尚未部署、没有真实资料或模型调用。**
+## v0.3.0 Cloudflare synthetic sandbox / Cloudflare 虚构数据沙盒
+- Added a separate D1-backed Worker in permanent mock-only mode; no DeepSeek API calls or live collection. / 新增永久 Mock-only 的 D1 Worker，不收集真人数据。
+- Added synthetic participant invitation and one-time activation, scoped sessions, server-locked A–F, mock B/D chat, quotas, revocation and blinded packet export. / 加入发码、会话、阶段锁定、模拟 AI、额度与盲评导出。
+- Added bilingual sandbox participant UI and researcher command-line script. / 中英双语网页与研究者命令行。
+- Added Node 22 in-memory SQLite D1-equivalent integration tests, 17 total project node:test checks, separate core checks. / 新增 17 项自动化测试。
+- No actual Cloudflare deployment, researcher Access integration, real API credential or human participants. / 未部署、未启用真实 API、未招募真人。
