@@ -1,28 +1,28 @@
-# PCR Research Lab v0.3.1 — 测试与限制 / Prototype Test Report and Limits
+# PCR Research Lab v0.4.0 — Quality Assurance / 测试与限制
 
-**Test date / 测试日期:** 2026-10-09
-**Environment / 环境:** local Node.js v22.16.0 and headless Chromium with Playwright.
+**Date / 日期:** 2026-10-09  
+**Status / 状态:** v0.4 offline synthetic demonstration, tested locally / 离线虚构原型已在本地验证。
 
-## Scope / 本轮范围
+## Automated Node checks / Node 自动化检查
 
-- **Implemented / 已实现：** Independent no-install `demo/index.html` with researcher-issued **synthetic** demonstration ID/code; A–F staged submissions; Mock AI in B and D with continued transcript; two mandatory critiques and optional third; critique dispositions; blinded V2 packet; J01/J02 rubric-based synthetic rating and JSON export. / 完整虚构流程演示。
-- **Interfaces reserved only / 仅保留接口：** Cloudflare Workers + D1 design/source scaffolding and local DeepSeek API relay documentation; neither was installed/deployed/connected for the offline demonstration. / 未安装或部署 Cloudflare，未调用 DeepSeek。
-- **Privacy / 数据隐私：** 100% synthetic test material; no authentic APIC records, API credentials or consent forms transferred into demo files or public repository. / 严禁真实实验数据。
+- Command / 命令：`npm test` from repository root, Node.js 22.16.0.
+- Result / 结果：**29 node:test cases passed, 0 failed**; legacy original-PCR structural/data checks also passed.
+- v0.4-specific Node tests: 12 passed. These cover study-information and task gate, independent confirmations, true counting, stage locking, B/D shared Mock AI dialogue, C3→E3, blind export, optional per-design notes, required overall rationale and three final confirmations. / 专门检验 12 类交互约束。
 
-## Test evidence / 测试证据
+## Browser click-through / 浏览器操作测试
 
-1. **Node automated checks / Node 自动化测试:** 24 test cases passed; zero failed (including 7 for offline demo), followed by existing original PCR structural checks. / 24 项通过，0 项失败。
-2. **Browser click-through / 浏览器交互验证:** researcher creates test code → participant activates and confirms synthetic mode → completes A–F → mock AI turns in B/D → researcher creates blinded V2 packet → J01 and J02 independently rate 4 dimensions → no page script errors. / 六阶段与双评审流程通过。
-3. **Source and data boundaries / 来源与隐私边界:** no original records present in tested build; event logs labelled `mock` and `synthetic-only`. / 虚构记录可区分来源。
+- Headless Chromium with Playwright, using the actual v0.4 HTML/CSS/JS bytes injected into a browser page. / 用实际源码进行浏览器 DOM 操作测试。
+- Tested / 已验证：issue code → login → information checkbox gate → task brief → A required fields → B two-pane and Count → B chat → C critique including optional third → D retains B transcript and counts V2 → E responds to third critique → F → completion summary → blinded packet → J01/J02 each rate, write overall rationale, confirm and export independently.
+- One actual UI defect was identified and corrected: confirmation checkboxes needed stable element IDs. / 修复确认勾选框缺乏稳定 DOM ID 的问题。
+- Extended test verified a draft survives switching away from and back to the participant tab using a test-only localStorage stub; J01/J02 both exported their own files; **no JavaScript page errors**. / 测试浏览器草稿状态和双评审独立导出。
 
-**Browser harness caveat / 浏览器环境限制:** The automated browser policy in this environment blocks direct `file://` and `localhost` navigation. Browser interactions were therefore tested using a browser page populated with the *exact HTML/CSS/JavaScript source* and a test-only localStorage stub. This verifies DOM event handling and end-to-end app logic, **but does not constitute a direct double-click file-opening test**. / 当前浏览器沙盒阻止直接本地文件访问；用同一份源代码注入页面完成点击验证，未验证双击文件打开。
+**Environment limitation / 测试环境限制：** The hosted automated browser blocks direct `file://` navigation with `ERR_BLOCKED_BY_ADMINISTRATOR`. The browser click-through therefore used an injected page and an in-memory localStorage stub. It demonstrates browser interaction with the same source, **but does not prove that double-clicking HTML works on the user's Windows computer**. / 自动化环境限制文件 URL，须在用户电脑上验证双击打开。
 
-**GitHub Actions / GitHub 自动检查:** The GitHub workflow is configured as `workflow_dispatch` (manual only). Its remote execution is not independently confirmed by this report. / GitHub Actions 保持手动触发，不将本地测试结果冒充远程 CI。
+## Method and data limitations / 方法与数据边界
 
-## Additional regression / 补充回归测试
-
-An extended browser test found that the optional third critique was correctly displayed in E but skipped by the sample-fill button. The E-stage sample was fixed and retested. The browser test now covers: optional C3 → E3 disposition, all A–F stages, B/D mock conversation, blinded packet download, separate J01/J02 JSON rating exports, and the complete fictional-record export. / 扩展测试发现并修复第三条可选批评的模拟填充问题，重新测试了六阶段和三类 JSON 导出。
-
-## Outstanding (not part of this demo) / 非当前原型范围
-
-Actual user authentication, paid API metering, Cloudflare deployment, secure research database, ethics approval, live recruitment and construct validity are intentionally not claimed or required. / 不声明已完成安全认证、正式云端部署、真实数据采集或效度验证。
+- The character counter uses Han characters + consecutive Latin-letter/digit tokens, excluding punctuation, labels and chat. Its output is **not guaranteed identical to Microsoft Word** for mixed-language documents. / 与 Word 字数统计可能有差异。
+- The study acknowledgement is a synthetic demonstration, **not real approved informed consent**. / 非正式知情同意。
+- The shared-browser judge demonstration has no production identity separation. Blinded packet exports intentionally exclude participant process data. / 仅演示界面盲评；不提供正式权限隔离。
+- AI conversations are generated by a fixed Mock provider; no real DeepSeek calls. / 全部模拟 AI 回应。
+- No historical APIC 2026 real participant materials, API keys, identifiable consent or private mappings are included in the release. / 不含真实历史研究资料。
+- GitHub Actions is manual-only to avoid repeated commit notification emails. / Actions 仅手动运行。
