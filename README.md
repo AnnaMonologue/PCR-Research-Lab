@@ -122,3 +122,17 @@ The publicly visible repository does not automatically grant reuse rights; no op
 - [Fail-closed sandbox Worker / 默认关闭研究接口的沙盒骨架](cloudflare/src/worker.mjs)
 
 **Local scaffold tests / 沙盒骨架测试：** `node --test cloudflare/src/worker.test.mjs`. A successful test does not authorise deployment with human participants. / 测试通过不代表已经具备真实研究条件。
+
+
+## 10. Legacy APIC materials / 原 APIC 历史资料的字段映射
+
+**中文：** 私有环境已完成原始 Word 表的结构性审查。为了避免将手动复制的历史对话误称为 API 自动日志，我们为旧材料单独定义来源规范。公开仓库只保存规范、JSON Schema、**完全虚构**的样例与结构检查脚本。真实参与者文本、同意书、评分与身份映射始终留在私有环境；目前未批量导入原始参与者数据。
+
+**English:** A private structural audit informs a provenance-preserving specification for legacy Word forms. Manually copied transcripts must never be labelled native API events. This public repository provides only documentation, a JSON schema, a fully **synthetic** sample and basic structural checks. No authentic participant submissions, consent or judge scores have been imported.
+
+- [Legacy field mapping / 历史字段映射](docs/LEGACY_APIC_IMPORT_SPEC.md)
+- [Legacy import schema / 导入结构定义](schemas/pcr-legacy-import-v1.schema.json)
+- [SYNTHETIC example / 虚构记录](samples/SYNTHETIC_legacy_apic_record.json)
+- [Source integrity tests / 来源约束测试](tests/legacy-import.test.js)
+
+**Limit / 限制：** The lightweight tests do not substitute for full JSON Schema validation, Word layout review, privacy assessment or ethics approval. / 当前基础测试不替代正式 JSON Schema 校验、Word 视觉复核、隐私审查和伦理审批。
