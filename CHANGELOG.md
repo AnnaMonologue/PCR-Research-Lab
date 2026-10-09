@@ -1,5 +1,17 @@
 # Changelog / 版本记录
 
+## v0.4.0 — Bilingual interactive offline study / 中英双语交互研究原型 (2026-10-09)
+- Added short study-information/acknowledgement and original 12-word task brief before A. / 独立说明确认页与任务页。
+- Added original per-phase guidance, required-field inline checks and confirmations for A/C/E/F. / 阶段引导及必填校验。
+- Built B/D two-column editor and continuous, independently scrollable Mock AI chat that automatically logs messages. / 双栏设计与同一段模拟聊天。
+- Replaced manual/fabricated V1/V2 word counts with deterministic 600–800 count, explicit Count action and recheck on submit. / 真实计算并核验字数。
+- Preserved two mandatory C critiques, optional third, E cross-reference to C and participant-written explanations. / C→E 自动引用与独立说明。
+- Rebuilt blinded judge journey: browse all, four 1–5 scores, optional per-design note, written overall rationale based on oral feedback workflow, three original confirmations and independent JSON export. / 逐份备注选填、总体说明必填及双评审确认。
+- No real historical records, DeepSeek API calls or Cloudflare deployment. / 不处理真人资料、不安装云端依赖。
+- Retained GitHub Actions manual-only. / CI 仅手动。
+
+# Changelog / 版本记录
+
 ## v0.2.1 — Bilingual public-source preparation / 双语公开源码整理
 
 - Added a canonical bilingual terminology glossary and strict preservation rules for source-study rubric concepts. / 增加中英专业术语库与原始评分量规的翻译纪律。
