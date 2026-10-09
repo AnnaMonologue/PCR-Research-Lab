@@ -130,9 +130,9 @@ To run current automated checks / 运行自动化检查：`npm test`.
 
 ## v0.4 locked interaction design / v0.4 已确认交互设计（尚未实现）
 
-**中文：** 2026-10-09 已确认 v0.4 的界面设计。包括：简短研究说明和确认、独立任务介绍、A–F 每阶段说明与字段校验、B/D 双栏作品编辑和模拟 AI 对话、600–800 字自动统计、C→E 逐项对应、匿名 V2 评审。**每份设计的简短评分备注选填**；全部评分后新增**总体评分说明（原型扩展）**，最后保留原表的三项评审确认。
+**中文：** 2026-10-09 已确认 v0.4 的界面设计。包括：简短研究说明和确认、独立任务介绍、A–F 每阶段说明与字段校验、B/D 双栏作品编辑和模拟 AI 对话、600–800 字自动统计、C→E 逐项对应、匿名 V2 评审。**每份设计的简短评分备注选填**；全部评分后填写**总体评分说明**，将原研究评审曾口头表达、但未录入表格的整体评价规范为书面记录；最后保留原表的三项评审确认。
 
-**English:** The owner approved the v0.4 interface design on 2026-10-09: study-information acknowledgement, task brief, bilingual A–F guidance and required-field checks, two-pane B/D mock AI and artefact editor, deterministic 600–800 length validation, critique dispositions, and blinded V2 review. **Per-design rating notes remain optional**, while a **prototype-only overall rating rationale** follows completion of all scores, before the original three final confirmations.
+**English:** The owner approved the v0.4 interface design on 2026-10-09: study-information acknowledgement, task brief, bilingual A–F guidance and required-field checks, two-pane B/D mock AI and artefact editor, deterministic 600–800 length validation, critique dispositions, and blinded V2 review. **Per-design rating notes remain optional**. After completing all ratings, judges provide a **written overall rating rationale**, formalising general impressions that the original judges reportedly shared orally but did not enter in their scoring forms; the original three confirmations then follow.
 
 **Status / 状态:** Requirements are fixed; the v0.4 UI **is not yet implemented**. This remains an offline synthetic-only prototype; Cloudflare and DeepSeek are documented extension points only. / 当前仅确认设计并记录实施任务，不代表完成新版功能、云端部署或真实 AI 调用。
 
