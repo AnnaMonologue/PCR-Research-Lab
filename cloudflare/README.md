@@ -31,7 +31,7 @@ PCR_SANDBOX_URL=https://YOUR-SANDBOX-URL RESEARCHER_DEMO_TOKEN=YOUR_PRIVATE_TOKE
 PCR_SANDBOX_URL=https://YOUR-SANDBOX-URL RESEARCHER_DEMO_TOKEN=YOUR_PRIVATE_TOKEN node cloudflare/scripts/admin.mjs packet
 ```
 
-The researcher CLI enforces HTTPS. Wrangler's default localhost HTTP endpoint can instead be exercised with the in-memory automated tests or via a trusted local HTTPS proxy. **Do not weaken credential checks to make a public demo work.** / CLI 强制 HTTPS，本地 HTTP 请使用自动化测试或受信任的 HTTPS 代理；不得为演示关闭验证。
+The researcher CLI accepts HTTPS and HTTP on **loopback only** (`http://localhost:8787` or `http://127.0.0.1:8787`). Remote HTTP is rejected; the researcher token remains required. / 命令行允许 HTTPS 与本机回环 HTTP，禁止远程 HTTP，管理凭证始终必需。
 
 ## Testing / 测试
 
