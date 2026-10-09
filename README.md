@@ -124,15 +124,15 @@ The publicly visible repository does not automatically grant reuse rights; no op
 **Local scaffold tests / 沙盒骨架测试：** `node --test cloudflare/src/worker.test.mjs`. A successful test does not authorise deployment with human participants. / 测试通过不代表已经具备真实研究条件。
 
 
-## 10. Legacy APIC materials / 原 APIC 历史资料的字段映射
+## 10. Compatibility check and synthetic E2E / 历史材料兼容性与虚构全流程测试
 
-**中文：** 私有环境已完成原始 Word 表的结构性审查。为了避免将手动复制的历史对话误称为 API 自动日志，我们为旧材料单独定义来源规范。公开仓库只保存规范、JSON Schema、**完全虚构**的样例与结构检查脚本。真实参与者文本、同意书、评分与身份映射始终留在私有环境；目前未批量导入原始参与者数据。
+**中文：** 已取消真实 APIC Word 数据导入器。历史研究资料仅在私有本地环境中只读参照，用于核对网页 A–F 阶段、任务指令与评分量规是否保留原意。**真实数据不转换、不上传、不回放成新系统日志**。实际运行测试使用虚构参与者、模拟 AI 回应和虚构作品，避免重用原研究中的个人资料。
 
-**English:** A private structural audit informs a provenance-preserving specification for legacy Word forms. Manually copied transcripts must never be labelled native API events. This public repository provides only documentation, a JSON schema, a fully **synthetic** sample and basic structural checks. No authentic participant submissions, consent or judge scores have been imported.
+**English:** The historical Word importer has been **cancelled**. Original APIC documents serve as private, read-only reference material for interface/protocol checks. No authentic records are converted, uploaded or replayed as new telemetry. Synthetic participants and mock AI responses drive functional tests.
 
-- [Legacy field mapping / 历史字段映射](docs/LEGACY_APIC_IMPORT_SPEC.md)
-- [Legacy import schema / 导入结构定义](schemas/pcr-legacy-import-v1.schema.json)
-- [SYNTHETIC example / 虚构记录](samples/SYNTHETIC_legacy_apic_record.json)
-- [Source integrity tests / 来源约束测试](tests/legacy-import.test.js)
+- [QA Strategy / 测试策略](docs/TEST_STRATEGY.md)
+- [Original source field reference (archive only) / 原始字段对照（仅供参考）](docs/LEGACY_APIC_IMPORT_SPEC.md)
+- [Fictional test fixture / 完全虚构的测试案例](samples/SYNTHETIC_legacy_apic_record.json)
+- [QA tracking Issue #5 / 测试任务](https://github.com/AnnaMonologue/PCR-Research-Lab/issues/5)
 
-**Limit / 限制：** The lightweight tests do not substitute for full JSON Schema validation, Word layout review, privacy assessment or ethics approval. / 当前基础测试不替代正式 JSON Schema 校验、Word 视觉复核、隐私审查和伦理审批。
+**Status / 当前状态：** Existing local mock tests pass; full browser end-to-end and Cloudflare enrollment tests are outstanding. / 本地 Mock 自动化检查已通过，但完整浏览器测试、云端发码和权限测试仍待实现。
