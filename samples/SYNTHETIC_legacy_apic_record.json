@@ -1,0 +1,108 @@
+{
+  "schema": "pcr-legacy-import-v1",
+  "dataset_kind": "synthetic",
+  "source_type": "legacy_manual_docx",
+  "case_ref": "SYNTHETIC_DEMO_001",
+  "stage_data": {
+    "A": {
+      "idea": "SYNTHETIC: make a beginner vocabulary board game.",
+      "mechanism": "SYNTHETIC: draw a card and explain it.",
+      "vocabulary": "SYNTHETIC: players practice matching meanings.",
+      "priority": "SYNTHETIC: clear rules and feedback."
+    },
+    "B": {
+      "materials": "SYNTHETIC: paper and markers.",
+      "rules": "SYNTHETIC: each player draws a card.",
+      "learning": "SYNTHETIC: classmates check word meanings.",
+      "ending": "SYNTHETIC: finish after one round.",
+      "rationale": "SYNTHETIC: supports low-pressure practice."
+    },
+    "C": {
+      "critique_units": [
+        {
+          "unit_local_id": "C1",
+          "problem": "SYNTHETIC: feedback is unclear.",
+          "reason": "SYNTHETIC: learners may retain errors.",
+          "proposed_response": "SYNTHETIC: add a simple answer card."
+        },
+        {
+          "unit_local_id": "C2",
+          "problem": "SYNTHETIC: game may take too long.",
+          "reason": "SYNTHETIC: limited class time.",
+          "proposed_response": "SYNTHETIC: use a shorter round."
+        }
+      ]
+    },
+    "D": {
+      "materials": "SYNTHETIC: paper, markers and answer cards.",
+      "rules": "SYNTHETIC: short rounds with visible answer cards.",
+      "learning": "SYNTHETIC: players confirm and explain answers.",
+      "ending": "SYNTHETIC: finish after 10 minutes.",
+      "rationale": "SYNTHETIC: clearer feedback and shorter activity."
+    },
+    "E": {
+      "dispositions": [
+        {
+          "unit_local_id": "C1",
+          "handling": "implemented_as_proposed",
+          "evidence": "SYNTHETIC: included answer cards."
+        },
+        {
+          "unit_local_id": "C2",
+          "handling": "implemented_differently",
+          "evidence": "SYNTHETIC: reduced number of turns."
+        }
+      ]
+    },
+    "F": {
+      "main_change": "SYNTHETIC: feedback became clearer.",
+      "source": "SYNTHETIC: participant critique and AI discussion.",
+      "rejected": "SYNTHETIC: rejected a complex scoring system."
+    }
+  },
+  "ai_transcript": {
+    "B": [
+      {
+        "role": "participant",
+        "content": "SYNTHETIC: suggest a vocabulary game.",
+        "source_provenance": "participant_copied_transcript",
+        "native_api_timestamp": null,
+        "api_request_id": null
+      },
+      {
+        "role": "ai",
+        "content": "SYNTHETIC: try word cards.",
+        "source_provenance": "participant_copied_transcript",
+        "native_api_timestamp": null,
+        "api_request_id": null
+      }
+    ],
+    "D": [
+      {
+        "role": "participant",
+        "content": "SYNTHETIC: clarify feedback.",
+        "source_provenance": "participant_copied_transcript",
+        "native_api_timestamp": null,
+        "api_request_id": null
+      },
+      {
+        "role": "ai",
+        "content": "SYNTHETIC: use an answer card.",
+        "source_provenance": "participant_copied_transcript",
+        "native_api_timestamp": null,
+        "api_request_id": null
+      }
+    ]
+  },
+  "qc": {
+    "case_mapping_verified": false,
+    "source_document_reviewed": false,
+    "consent_status": "unverified",
+    "field_status": {
+      "stage_data.C.critique_units[2]": "not_applicable"
+    },
+    "notes": [
+      "FICTIONAL EXAMPLE ONLY / 完全虚构；不是对任何参与者原文的改写。"
+    ]
+  }
+}
