@@ -17,3 +17,15 @@
 .summary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.stat{padding:13px;background:#f1f6f9;border-radius:9px;display:flex;flex-direction:column;gap:6px}.stat strong{font-size:1.4rem}.quiet{color:#607886;font-size:.82rem;line-height:1.5}
 @media(max-width:850px){.workbench{grid-template-columns:1fr}.workbench .chat-panel{position:static;max-height:none;min-height:440px}.chat-history{max-height:420px}.vocab-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:550px){.summary-grid{grid-template-columns:1fr}.chat-history{max-height:360px}.vocab-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* v0.4.1 participant presentation / 参与者简洁布局 */
+header{padding-top:20px;padding-bottom:17px}header h1{font-size:1.85rem}header small{font-size:.7rem}footer{font-size:.77rem;padding:9px}
+.task-banner{background:#fff1d5;color:#413119;border-left:5px solid #d89c37;padding:15px 20px;border-radius:9px;margin:0 0 16px;line-height:1.65;box-shadow:0 2px 10px #92712a13}
+.task-banner>strong{font-size:.8rem;letter-spacing:.06em}.task-banner>p{font-size:1.11rem;font-weight:750;margin:7px 0 4px}
+.task-banner .vocab-toggle{font-size:.85rem;padding:2px 0;margin:8px 0 0}.task-banner .vocab-grid{margin:8px 0}
+.phase-sidebar[hidden]{display:none}.phase-sidebar{position:fixed;z-index:40;left:0;top:38%;transform:translateY(-18%);width:43px;overflow:hidden;background:#15364c;color:#fff;border-radius:0 10px 10px 0;box-shadow:0 4px 20px #132e4277;transition:width .18s ease;max-height:65vh}
+.phase-sidebar:hover,.phase-sidebar:focus-within,.phase-sidebar.pinned{width:228px}.sidebar-pin{display:block;width:228px;text-align:left;background:#15364c;border-radius:0;padding:12px 10px;white-space:nowrap}.sidebar-pin:hover{background:#184f6b}.sidebar-label{font-size:.85rem}
+.sidebar-steps{padding:0 10px 10px}.sidebar-step{padding:9px 5px;border-bottom:1px solid #47677a;display:flex;gap:14px;white-space:nowrap;align-items:center;color:#9fb7c5}.sidebar-step strong{width:20px;flex:none;color:#fff}.sidebar-step span{font-size:.79rem}.sidebar-step.done{color:#afdfbd}.sidebar-step.active{color:#fff;background:#235d72;border-radius:5px}
+.workbench{grid-template-columns:minmax(0,1.08fr) minmax(340px,.92fr)}.workbench .reference-panel{grid-column:1}.workbench:has(.reference-panel){grid-template-columns:minmax(310px,.8fr) minmax(0,1.2fr)}.workbench .reference-panel + .card{grid-column:2}.reference-panel .reference{max-height:65vh}.reference-panel .reference[open]{overflow-y:auto}
+.chat-panel{min-width:0}.chat-panel .secondary{margin-top:9px;width:100%}
+@media(max-width:850px){.workbench:has(.reference-panel){grid-template-columns:1fr}.workbench .reference-panel+.card{grid-column:auto}.phase-sidebar{top:48%}.task-banner>p{font-size:1rem}}
