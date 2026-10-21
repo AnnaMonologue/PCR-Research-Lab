@@ -27,7 +27,7 @@ const STORE=path.join(ROOT,'runtime');
 const MAX_TURNS=60;
 const MAX_PROMPT=8000;
 const VALID_ID=/^S-[A-Z0-9]{12,28}$/;
-const FILES=new Set(['participant.html','participant.js','core.js','styles.css','researcher.html','researcher.js','judge.html','judge.js']);
+const FILES=new Set(['participant.html','participant.js','core.js','styles.css','researcher.html','researcher.js','judge.html','judge.js','demo/index.html','demo/style.css','demo/model.js','demo/app.js']);
 const ACTIVE=new Set();
 if(!['mock','deepseek'].includes(PROVIDER))throw Error('AI_PROVIDER must be mock or deepseek');
 if(PROVIDER==='deepseek'&&!KEY)throw Error('DEEPSEEK_API_KEY required with AI_PROVIDER=deepseek');
@@ -90,7 +90,7 @@ async function route(req,res){
   }catch(err){appendEvent(s,'ai_error',{request_id,stage,error:String(err.message).slice(0,180)});saveSession(s);throw Object.assign(Error('AI 请求失败 / AI request failed: '+err.message),{status:502});}
   finally{ACTIVE.delete(session_id);}
  }
- if(req.method==='GET')return sendFile(res,url==='/'?'participant.html':decodeURIComponent(url.slice(1)));
+ if(req.method==='GET')return sendFile(res,url==='/'?'demo/index.html':decodeURIComponent(url.slice(1)));
  respond(res,404,{error:'未找到路由 / Route not found'});
 }
 const server=http.createServer((req,res)=>{route(req,res).catch(e=>respond(res,e.status||500,{error:e.message||'服务器异常 / Unexpected server error'}));});
