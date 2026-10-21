@@ -1,4 +1,4 @@
-/* PCR Research Lab v0.4.1 — bilingual zero-install synthetic demonstration / 完全虚构离线交互演示。 */
+/* PCR Research Lab v0.4.2 — bilingual zero-install synthetic demonstration / 完全虚构离线交互演示。 */
 (function(){'use strict';
 const D=globalThis.PCR_DEMO,KEY='PCR_LAB_OFFLINE_SYNTHETIC_V04';
 const stageNames={A:'独立构思 / Independent pre-AI ideation',B:'第一版设计 V1 / AI-supported first design',C:'独立批评 / Independent critique',D:'最终版本 V2 / AI-supported refinement',E:'修改处理说明 / Critique dispositions',F:'事后解释 / Post-task account'};
@@ -32,7 +32,7 @@ function card(title,caption,parent=$('app')){const el=elem('section',parent,'car
 function button(parent,label,fn,style=''){const b=elem('button',parent,style,label);b.type='button';b.addEventListener('click',fn);return b;}
 function inputField(parent,key,label,value='',kind='textarea'){const w=elem('div',parent,'input-group'),l=elem('label',w,'',label);const el=elem(kind,l);el.dataset.field=key;el.id='field-'+key;if(kind==='textarea')el.rows=3;el.value=value??'';elem('div',w,'field-error').dataset.errorFor=key;return el;}
 function selectField(parent,key,label,value='',options=[]){const w=elem('div',parent,'input-group'),l=elem('label',w,'',label),el=elem('select',l);el.dataset.field=key;el.id='field-'+key;for(const [v,t]of options){const o=elem('option',el,'',t);o.value=v;}el.value=value??'';elem('div',w,'field-error').dataset.errorFor=key;return el;}
-function checkbox(parent,key,label,checked=false){const w=elem('label',parent,'checkline'),el=elem('input',w);el.type='checkbox';el.dataset.field=key;el.id='field-'+key;el.checked=checked;elem('span',w,'',label);elem('div',parent,'field-error').dataset.errorFor=key;return el;}
+function checkbox(parent,key,label,checked=false){const w=elem('label',parent,'checkline'),el=elem('input',w);el.type='checkbox';el.dataset.field=key;el.id='field-'+key;el.checked=checked;elem('span',w,'',label);elem('div',parent,'field-error').dataset.errorFor=key;el.addEventListener('change',()=>{const error=parent.querySelector('[data-error-for="'+key+'"]');if(error)error.textContent='';el.classList.remove('invalid');if(key.startsWith('consent'))tell('');});return el;}
 function paintErrors(errors){for(const n of document.querySelectorAll('.field-error'))n.textContent='';for(const field of document.querySelectorAll('.invalid'))field.classList.remove('invalid');let first=null;for(const [key,msg]of Object.entries(errors)){const item=document.querySelector('[data-error-for="'+key+'"]');if(item){item.textContent=msg;const el=$('field-'+key);if(el){el.classList.add('invalid');first??=el;}}else if(key==='__chat'||key==='__count'||key==='__stage'){const node=$('stage-validation');if(node)node.textContent+=(node.textContent?' · ':'')+msg;}}
 if(first)first.focus();}
 function download(data,name){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json;charset=utf-8'}),url=URL.createObjectURL(blob),a=elem('a',document.body);a.href=url;a.download=name;a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
@@ -45,11 +45,40 @@ function sample(stage,key){const samples={A:{idea:'【完全虚构】制作一�
  if(stage==='B'||stage==='D'){const base='【完全虚构的游戏设计】两至四名零基础大学生使用十二张马来语词汇卡和对应的中文提示卡参加一轮不超过十五分钟的互动活动。每个人轮流选择词卡，说出含义并给出生活情境例子。同伴即时核对答案，答错后使用提示再尝试一次。每张卡都应被使用，材料可重复打印，总成本控制在三十元以内。';let out='';while(D.countText(out)<122)out+=base;return out;}
  if(stage==='E'&&key.includes('evidence'))return'【完全虚构】参与者在 V2 的规则或反馈段落中明确说明采取的修改，并指出这样做的原因。';return'';}
 function login(){const c=card('虚构参与者登录 / Synthetic participant login','请输入研究者端生成的虚构编号和一次性模拟访问码。仅用于演示，不提供安全身份验证。 / Demo credentials have no security guarantees.');const id=inputField(c,'login_id','虚构编号 / Synthetic ID',lastIssued?.id||'','input'),code=inputField(c,'login_code','模拟访问码 / Mock access code',lastIssued?.code||'','input');code.type='password';button(c,'进入实验 / Activate demo session',()=>run(()=>D.activate(s,id.value.trim(),code.value.trim())));}
-function information(p){const c=card('知情同意与确认 / Information and consent','请阅读以下信息并确认，再进入实验任务。 / Please review the information before continuing.');
- const sections=[['研究任务 / Task','本活动为教育游戏设计的六阶段实验任务，预计约 1 小时。 / Six-stage game-design task; approximately one hour.'],['记录范围 / Records','系统记录你的阶段回答、作品版本、AI 对话、提交时间；最终作品将以匿名编号交给独立评审。 / Stage responses, versions, conversations and submission times are recorded; the final design is reviewed under an anonymous ID.'],['数据与选择 / Data and choice','你可以停止填写。正式研究的保密、数据保存及撤回安排应以获批的完整知情同意文件为准。 / Participation may be stopped; approved research requires a separate full consent and withdrawal policy.']];
- for(const [title,body]of sections){const row=elem('div',c,'info-row');elem('h3',row,'',title);elem('p',row,'',body);}
- const box=checkbox(c,'consent','我已阅读上述说明并同意继续 / I have read the information and agree to proceed');button(c,'同意并继续 / Agree and continue',()=>{if(!box.checked){paintErrors({consent:'请先勾选 / Please confirm'});return;}run(()=>D.ack(s));});
- elem('p',c,'quiet','当前是虚构数据测试，以上确认仅用于演示流程，不构成正式伦理批准。 / Synthetic demonstration only; this is not an ethics-approved consent process.');}
+function information(p){
+ const c=card('参与者说明与知情确认 / Participant information and consent','依据原 APIC 2026 完整知情同意书的十项说明整理。请先阅读，再进入任务。 / Based on all ten sections of the original APIC 2026 participant information sheet.');
+ const notice=elem('div',c,'consent-notice');
+ elem('strong',notice,'','原研究条款参考 / Original study terms — reference only');
+ elem('p',notice,'','这是离线虚构流程演示：没有正式招募、真实 DeepSeek 调用或经伦理批准的知情同意收集。请勿输入真实个人信息。 / This is an offline synthetic demonstration, not recruitment, live AI use or approved consent collection. Never enter personal information.');
+ const tools=elem('div',c,'consent-toolbar');
+ elem('span',tools,'muted','以下十项对应原知情同意文件 / Ten sections from the source document');
+ const group=elem('div',c,'consent-sections');
+ for(const [index,section] of globalThis.PCR_CONSENT.sections.entries()){
+   const details=elem('details',group,'consent-section');
+   if(index===0)details.open=true;
+   elem('summary',details,'',section.title);
+   const content=elem('div',details,'consent-section-content');
+   elem('p',content,'',section.zh);
+   elem('p',content,'consent-english',section.en);
+   if(section.demo)elem('p',content,'consent-adaptation',section.demo);
+ }
+ button(tools,'展开全部 / Expand all',()=>{
+   const rows=[...group.querySelectorAll('details')];
+   const shouldOpen=rows.some(row=>!row.open);
+   rows.forEach(row=>{row.open=shouldOpen;});
+   tools.querySelector('button').textContent=shouldOpen?'收起全部 / Collapse all':'展开全部 / Expand all';
+ },'secondary');
+ const confirmArea=elem('section',c,'consent-confirmations');
+ elem('h3',confirmArea,'','理解与演示确认 / Understanding and demonstration acknowledgement');
+ elem('p',confirmArea,'muted','原文件包含六项正式知情同意勾选及姓名、联系方式、签名和接收研究摘要选项。本版保留对应的六个理解确认，但不索取身份资料，也不将勾选视作真实研究同意。 / The source form has six formal checks and identity/contact/signature fields. The demo adapts six acknowledgement checks without requesting identity or treating these as study consent.');
+ const checks=globalThis.PCR_CONSENT.confirmations.map((label,index)=>checkbox(confirmArea,'consent'+(index+1),label));
+ button(c,'确认并进入任务说明 / Confirm and continue',()=>{
+   const missing={};
+   checks.forEach((control,index)=>{if(!control.checked)missing['consent'+(index+1)]='请确认此项 / Please acknowledge';});
+   if(Object.keys(missing).length){paintErrors(missing);tell('请先阅读并确认全部六项 / Acknowledge all six items',true);return;}
+   run(()=>D.ack(s));
+ });
+}
 function taskBrief(){const c=card('教育游戏共创任务介绍 / Educational game co-creation task','独立任务说明 / Task brief');elem('p',c,'','为 2–4 名此前未接触过马来语的中国大学生，设计一款练习下列 12 个日常词汇的互动游戏。 / Design a game for 2–4 Chinese university beginners learning these 12 Malay words.');
  const t=elem('div',c,'vocab-grid');for(const [malay,zh] of globalThis.PCR.WORDS){const w=elem('div',t,'vocab-pair');elem('strong',w,'',malay);elem('span',w,'',zh);}
  const ul=elem('ul',c);for(const item of ['一个回合 ≤15 分钟，覆盖 12 词 / One ≤15-minute round using all twelve words','使用常见材料，每组成本 ≤30 元 / Common materials, ≤CNY 30 per group','主动辨认、回忆或在情境中使用词语，并有明确反馈 / Active practice and explicit feedback','必须具有互动机制；不能只是词表、抄写或普通选择题 / Include interaction beyond a word list or standard quiz','V1 和 V2 均写材料、规则、练习反馈、结束方式、设计理由 / Both designs contain five components'])elem('li',ul,'',item);
