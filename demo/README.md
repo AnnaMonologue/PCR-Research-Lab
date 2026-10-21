@@ -1,4 +1,4 @@
-# PCR Research Lab v0.4.1.1 / PCR 研究原型 v0.4.1
+# PCR Research Lab v0.4.2 / PCR 研究原型 v0.4.2
 
 **直接双击 `demo/index.html` 即可开始。 / Double-click `demo/index.html` to start.** 不需要 Node.js、Cloudflare、数据库、网络连接或 DeepSeek API。/ No Node.js, Cloudflare, database, network or DeepSeek credentials are needed.
 
@@ -7,7 +7,7 @@
 ## 操作 / Walkthrough
 
 1. **研究者 / Researcher:** 点击“生成虚构编号及访问码”，复制网页显示的 `SYNTHETIC_P...` 与 `DEMO-...`。/ Issue a synthetic code.
-2. **参与者 / Participant:** 使用编号与访问码登录。阅读简短研究说明并主动确认；查看含 12 个马来语词汇的任务介绍，再进入 A。/ Activate, acknowledge the study information and read the task brief.
+2. **参与者 / Participant:** 使用编号与访问码登录。阅读依据原研究文件整理的 10 节知情说明，完成 6 项虚构演示确认；再查看含 12 个马来语词汇的任务介绍，再进入 A。/ Activate, acknowledge the study information and read the task brief.
 3. **A:** 填写四项独立构思及独立完成确认。/ Four required independent-ideation fields.
 4. **B:** 左侧填写 V1 五项设计，右侧至少发送一次模拟 AI 消息；页面会实时统计字数，确认 600–800 再提交；无需手填字数。/ Complete a five-part V1 and converse with mock AI in the split view, count, then submit.
 5. **C:** 查看锁定的 V1，独立填写前两条完整批评；第三条可选。/ Two required critiques, third optional, with no AI.
@@ -30,7 +30,7 @@
 
 ## 与原研究的关系 / Method provenance
 
-原研究评审表每份作品均有可选“简短备注”。据研究者说明，原评审还曾口头提供总体评价，但没有收录在原表中。v0.4.1 将这些总体感受规范成书面填写；不能把新的模拟文字当成旧评审的原话。/ Original per-design notes were optional. The researcher reports that the judges also gave overall impressions orally; the updated interface documents such reflections in writing but does not reconstruct historical speech.
+原研究评审表每份作品均有可选“简短备注”。据研究者说明，原评审还曾口头提供总体评价，但没有收录在原表中。v0.4.2 将这些总体感受规范成书面填写；不能把新的模拟文字当成旧评审的原话。/ Original per-design notes were optional. The researcher reports that the judges also gave overall impressions orally; the updated interface documents such reflections in writing but does not reconstruct historical speech.
 
 ## 预留接口 / Reserved integrations
 
@@ -46,3 +46,9 @@
 If you still see v0.2.1, `npm start`, a manual Word-count field, or an AI-service connection error, you are using an old extracted folder or a cached document. Re-extract the current ZIP and open `demo/index.html`. / 如仍出现 v0.2.1、手填 Word 字数或 AI 连接错误，请重新解压最新 ZIP 并打开统一入口。
 
 模型名称 **DeepSeek-V4.1-Flash** 是未来接口的占位标识；当前所有对话为 **Mock**，不会实际调用该模型，不会读取或保存真正的 API 密钥。/ The model label is a planned integration marker; responses remain synthetic.
+
+## 知情同意书数字化 / Original participant-information sheet
+
+原 APIC 知情同意文件共有十节说明和六项勾选确认。本版提供可展开的十节双语内容以及六项“理解与演示确认”，所有项目确认后才能进入任务介绍。/ The source contains ten information sections and six original consent checks; this offline demo presents ten bilingual expandable sections and six simulated acknowledgements.
+
+原研究涉及 DeepSeek 第三方平台、提交后七个自然日内撤回、五年保存、去标识化引用、研究联系人和研究摘要接收选择。**这些属于原研究条件，不是离线演示实际提供的服务**。原文件中的姓名、签名、电话、邮箱等身份输入不在本版展示。/ Historical withdrawal, retention, third-party processing and contact arrangements must not be confused with capabilities of the browser-only mock; identifying fields are intentionally absent.
