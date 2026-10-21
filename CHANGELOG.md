@@ -1,5 +1,12 @@
 # Changelog / 版本记录
 
+## v0.4.2 — Source-based consent and cleanup / 原始知情同意校对与代码清理
+- Expanded the participant information screen to cover all ten original consent sections in expandable bilingual panels, with six demo-only acknowledgement checks. / 10 节完整要点与 6 项模拟确认。
+- Separated historical eligibility, DeepSeek processing, 7-day withdrawal, 5-year retention, privacy, anonymity and optional summary from offline mock capabilities. / 明确原研究条款和离线模拟之间的区别。
+- Removed obsolete v0.2 page scripts/styles and updated the optional static server allowlist. / 删除旧前端脚本及无用样式。
+- Reformatted and consolidated CSS, improved missing-field error dismissal, and added regression tests. / CSS 排版整理，优化校验提示，增加测试。
+- No real participants, names, consent signatures, AI requests or Cloudflare deployment. / 不含真人资料或真实模型调用。
+
 ## v0.4.1 — Participant UX fixes / 参与者交互修复 (2026-10-21)
 - Unified old participant/researcher/judge entrypoints and the optional localhost home to the offline demo. / 旧入口统一至新版。
 - Removed obsolete participant-facing technical disclaimers, added a prominent task banner on every phase and a collapsible hover/pin phase rail. / 精简页面并新增任务横幅及左侧折叠导航。
