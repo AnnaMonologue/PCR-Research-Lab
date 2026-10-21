@@ -28,3 +28,9 @@ No genuine participant records, identities, consent or real provider credentials
 ## Future integrations / 未来接口
 
 `cloudflare/` and `server.js` remain independent *optional* engineering references. No installation, deployment or API calls are needed for the offline walkthrough. / 云端与模型仅预留处理方案。
+
+## v0.4.2 source-consent parity note / v0.4.2 原知情同意书补齐
+
+The provisional information page was replaced with ten collapsible bilingual sections based on the original APIC 2026 participant information sheet, plus six synthetic-only acknowledgements. Historical DeepSeek privacy, eligibility, 7-day withdrawal, five-year retention, quotations and contact provisions are distinguished from the capabilities of this offline mock. No signature or contact details are requested. / 十节说明按原研究材料补齐，六项仅属演示确认，历史条款不冒充模拟系统服务。
+
+See `demo/consent.js` and `docs/DEMO_QA_REPORT.md`.
