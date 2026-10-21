@@ -1,5 +1,14 @@
 # Changelog / 版本记录
 
+## v0.4.1 — Participant UX fixes / 参与者交互修复 (2026-10-21)
+- Unified old participant/researcher/judge entrypoints and the optional localhost home to the offline demo. / 旧入口统一至新版。
+- Removed obsolete participant-facing technical disclaimers, added a prominent task banner on every phase and a collapsible hover/pin phase rail. / 精简页面并新增任务横幅及左侧折叠导航。
+- Preserved B/D side-by-side editor/chat with local mock responses; C/E provide read-only design references beside independent response fields. / B/D 双栏 AI，C/E 只读对照双栏。
+- Made design length live and auto-rechecked on submission; no Word-based manual declaration or requirement to click Count before continuing. / 字数实时更新并在提交时复核。
+- Display DeepSeek-V4.1-Flash as a **reserved API integration label only**; live API requires separate server-side key configuration. / 预留模型标识，不暗示实际已连接。
+- Added no-network browser QA and UI compatibility tests; 33 Node tests passed. / 浏览器完整模拟流程与 33 项自动化测试通过。
+
+
 ## v0.4.0 — Bilingual interactive offline study / 中英双语交互研究原型 (2026-10-09)
 - Added short study-information/acknowledgement and original 12-word task brief before A. / 独立说明确认页与任务页。
 - Added original per-phase guidance, required-field inline checks and confirmations for A/C/E/F. / 阶段引导及必填校验。
