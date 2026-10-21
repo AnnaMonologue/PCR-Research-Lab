@@ -1,6 +1,6 @@
 {
   "name": "pcr-research-lab",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "private": true,
   "description": "Bilingual offline synthetic PCR research workflow prototype; Cloudflare/DeepSeek adapters reserved only",
   "scripts": {
