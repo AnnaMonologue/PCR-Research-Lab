@@ -42,6 +42,13 @@ test('serves participant page but blocks files outside static allowlist',async()
  const config=await fetch(URL+'/.env.example');assert.equal(config.status,404);
  const server=await fetch(URL+'/server.js');assert.equal(server.status,404);
 });
+test('serves offline consent assets via the optional local server',async()=>{
+ const r=await fetch(URL+'/demo/consent.js');
+ assert.equal(r.status,200);
+ assert.match(await r.text(),/PCR_CONSENT/);
+ const stale=await fetch(URL+'/participant.js');
+ assert.equal(stale.status,404);
+});
 test('blocks cross-origin POST calls',async()=>{
  const r=await fetch(URL+'/api/session',{method:'POST',headers:{Origin:'https://evil.example','Content-Type':'application/json'},body:JSON.stringify({session_id:fakeId()})});assert.equal(r.status,403);
 });
