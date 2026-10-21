@@ -27,7 +27,7 @@ const STORE=path.join(ROOT,'runtime');
 const MAX_TURNS=60;
 const MAX_PROMPT=8000;
 const VALID_ID=/^S-[A-Z0-9]{12,28}$/;
-const FILES=new Set(['participant.html','participant.js','core.js','styles.css','researcher.html','researcher.js','judge.html','judge.js','demo/index.html','demo/style.css','demo/model.js','demo/app.js']);
+const FILES=new Set(['participant.html','researcher.html','judge.html','core.js','demo/index.html','demo/style.css','demo/model.js','demo/consent.js','demo/app.js']);
 const ACTIVE=new Set();
 if(!['mock','deepseek'].includes(PROVIDER))throw Error('AI_PROVIDER must be mock or deepseek');
 if(PROVIDER==='deepseek'&&!KEY)throw Error('DEEPSEEK_API_KEY required with AI_PROVIDER=deepseek');
