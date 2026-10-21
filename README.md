@@ -1,6 +1,6 @@
 # PCR Research Lab｜PCR 人机共创研究实验室
 
-**Prompt–Critique–Refinement (PCR) / 提示—批评—修订流程 · v0.4.1**
+**Prompt–Critique–Refinement (PCR) / 提示—批评—修订流程 · v0.4.2**
 
 **Start here / 从这里开始：** 解压后直接打开 **[`demo/index.html`](demo/index.html)**。三个旧入口 `participant.html`、`researcher.html`、`judge.html` 也会自动转到这里。无需软件安装、服务器、Cloudflare 或 DeepSeek API。/ Unzip and open `demo/index.html` directly in your browser. No installation or API keys.
 
@@ -11,12 +11,14 @@
 | 页面 / Screen | 操作 / Function |
 |---|---|
 | 研究者 / Researcher | 虚构编号与访问码发放；进度概览、匿名 V2 评审包、JSON 导出 / Mock issuance, progress, blind packet, JSON export |
-| 参与者入口 / Participant entry | 简短研究说明和虚构模式确认，12 词任务介绍 / Information, acknowledgement and task brief |
+| 参与者入口 / Participant entry | 源于完整原始知情说明的 10 节双语信息、6 项虚构演示确认及 12 词任务介绍 / Ten-section source-based bilingual information, six demo-only checks and task brief |
 | A、C、E、F | 独立填写，逐字段必填校验，AI 禁用 / Independent responses, required checks, no AI |
 | B、D | 左侧 V1/V2 五项作品编辑，右侧可滚动的 Mock AI 对话，完整聊天自动记录且同一上下文 / Two-panel design editor + continuous mock chat |
 | C / 独立批评 | 左侧 V1 只读预览，右侧填写至少两条独立批评，无 AI / V1 side-by-side with independent critique, no chat |
 | V1/V2 字数 / Text length | 实时核算五项设计正文，600–800 才可继续；提交时自动复核 / Live count and revalidation on submit |
 | 评审 / Judge | 先通读全部匿名 V2；四维 1–5 分；单份备注选填；总体评分说明必填；三项最终确认 / Browse, rate, optional notes, overall rationale and confirmations |
+
+**原研究知情同意书核对 / Source consent cross-check:** 十节说明包括目的、招募资格、任务、资料收集、第三方 AI 风险、潜在不适、报酬、自愿与撤回、匿名引用及保存、联系信息；原签名及联系方式输入在演示里刻意省略。历史研究条款不应被误认为当前 Mock 原型提供同等服务。/ Ten sections preserve source substance while genuine identity/signature fields are intentionally omitted from the synthetic interface.
 
 **详细操作 / Instructions:** [`demo/README.md`](demo/README.md)。
 **实现测试 / QA report:** [`docs/DEMO_QA_REPORT.md`](docs/DEMO_QA_REPORT.md)。
@@ -46,7 +48,7 @@ All demo IDs, prompts, AI turns and scores are fictional. No authentic APIC 2026
 
 **Source work / 源研究：** Shen (2026), *Shifting Assessment Focus: Managing Behaviour and Measuring Innovation Performance in Human–AI Co-creation* (APIC 2026).
 
-## v0.4.1 参与者界面修复 / Participant UX update
+## v0.4.2 参与者界面修复 / Participant UX update
 
 - 旧版三种角色入口自动进入统一离线 `demo/index.html`，避免打开旧 v0.2.1 页面后因 AI 服务器未运行而卡在 B。/ Legacy entrypoints now redirect to the self-contained offline demo; no server required.
 - 知情说明及确认位于 A 之前；每个阶段顶部固定突出显示完整实验目标，可展开 12 个词。/ Consent confirmation before A; prominent task brief on each stage.
@@ -57,3 +59,7 @@ All demo IDs, prompts, AI turns and scores are fictional. No authentic APIC 2026
 - B/D 可直接使用“发送示例提问”产生离线模拟对话，**不需要 API Key，也不会向 DeepSeek 发起请求**。/ Mock chats operate offline; real API calls are not made.
 
 **Current scope / 使用限制：** 当前模拟编号、草稿和对话保存在浏览器，仅限虚构测试。正式研究的知情同意、数据安全、真实身份校验与 AI 服务接入仍需另行实施。/ Synthetic local-only workflow; not an approved study platform.
+
+## Source cleanup / 无用代码清理
+
+旧分离式页面脚本 `participant.js`、`researcher.js`、`judge.js` 及 `styles.css` 已删除；三个同名 HTML 保留为转入统一演示页的兼容入口。`server.js`/Cloudflare 预留接口未删除，不属于离线演示的依赖。/ Obsolete frontend code removed; compatibility redirects and reserved server interfaces retained.
