@@ -13,58 +13,59 @@
 
 # 发布闸门 / Release Checklist
 
-**Planning document only / 仅为计划文档；不代表已获伦理许可。**
+> Draft — not an ethics approval / 草案，不代表伦理许可。
 
-## Stage 0: GitHub demo / 公开演示
-- [x] APIC A–F process documented / 已整理原研究流程
-- [x] Bilingual terminology and public code / 公开双语术语
-- [x] Mock-only local demonstration / 本地模拟 AI
-- [ ] Full manual browser walkthrough / 完整浏览器人工测试
+## Phase 0 / 当前公开演示
 
-## Stage 1: Cloudflare sandbox / Cloudflare 沙盒
-- [x] Architecture and D1 schema drafted / 已完成设计稿
-- [x] Fail-closed Worker bootstrap drafted / 已有默认关闭真实端点的骨架
-- [ ] Isolated D1 development database created / 创建 D1 开发库
-- [ ] Researcher Access-protected issuance and revocation / 研究者管理认证和发码
-- [ ] HMAC invitation validation, scoped sessions, cookies / 访问码验证与会话
-- [ ] Server-side A–F locking and consent version / 阶段锁定及同意版本
-- [ ] Mock B/D chat quota, replay and global billing guard / AI 额度和幂等性
-- [ ] Permission, CSRF, XSS, rate-limit and multi-tab tests / 安全与并发测试
+- [x] APIC PCR A–F protocol and bilingual glossary documented / 已记录原研究流程与双语术语
+- [x] Local-only mock DeepSeek relay available / 已有本机模拟 AI
+- [x] Public repository excludes actual data and provider keys / 公开代码不含研究数据与服务商密钥（持续核查）
+- [ ] Confirm bilingual interface accessibility in full browser walkthrough / 完整浏览器人工测试待做
 
-## Stage 2: Approved research / 获批后正式研究
-- [ ] Ethics approval, bilingual consent, data retention / 伦理、同意和保留策略
-- [ ] Cloudflare and DeepSeek processing / jurisdiction review / 第三方数据处理审核
-- [ ] Secure exports, recovery and deletion tested / 导出、恢复与删除测试
-- [ ] Live provider key and budget monitor activated / 正式密钥和预算限制
-- [ ] Independent security review before public recruitment / 独立安全验收
+## Phase 1 / Cloudflare 沙盒开发
 
-**STOP / 停止条件：** Until Stages 1–2 are complete, no real participant or API Key should enter the internet-facing sandbox. / 第一、二阶段未完成前，不得在线收集真实参与者数据，也不得给测试沙盒配置可用于公开调用的模型密钥。
+- [ ] Cloudflare account and isolated sandbox D1 database / 建立隔离沙盒 D1
+- [ ] Write Worker backend; remove local-server assumptions / 迁移服务器逻辑
+- [ ] Implement Access-protected admin issuance, revocation and audit / 管理员认证与发码撤销
+- [ ] Implement code HMAC verification, short-lived scoped session / 凭证验证及短期会话
+- [ ] Implement server-enforced A–F stages and frozen submissions / 阶段约束与提交锁定
+- [ ] Implement mock-only B/D relay, idempotency and quotas / Mock 版 AI 请求与额度控制
+- [ ] Confirm CSRF, HTTPS, XSS, CORS, brute-force and cookie protections / Web 安全测试
+- [ ] Test malicious/expired/reused code, wrong-stage chat, replay, multi-tab and interruption / 边界与并发测试
+- [ ] Test permission isolation and anonymised judge exports / 盲评隔离测试
 
+## Phase 2 / 上线前审批
 
-## Compatibility and functional QA / 历史参考与功能测试
+- [ ] Ethical approval and approved bilingual participant info/consent / 伦理与双语知情同意
+- [ ] Cloudflare/DeepSeek processing and transfer reviewed / 服务商数据处理核验
+- [ ] Live AI settings, token cost, hard ceilings and spend monitoring reviewed / 模型与额度
+- [ ] Data retention, encrypted exports, backup/restore, deletion and access policy / 保留与删除
+- [ ] Independent security review and signed-off smoke-test report / 上线安全复核
+- [ ] Staging account separate from live research environment / 环境隔离
 
-- [x] Cancelled legacy Word importer / 已取消真实 Word 导入器（Issue #4）
-- [x] Documented private read-only field/rubric cross-check / 已制定私有只读字段与量规核对方案
-- [x] Documented fully synthetic workflow testing / 已制定虚构全流程测试方案
-- [x] Existing mock localhost tests: 8 passed, 0 failed (2026-10-09) / 已有本地 Mock 自动化检查通过
-- [x] Existing Cloudflare sandbox fail-closed tests: 2 passed, 0 failed (2026-10-09) / 云端沙盒关闭状态测试通过
-- [ ] Full manual A–F browser walkthrough using only fictional records / 待完成全流程浏览器测试
-- [ ] Cross-check historical protocol privately against UI; report only aggregate pass/fail / 待完成私有逐项核对
-- [ ] Cloudflare login/quotas/persistence E2E after implementation / 线上认证、额度、持久化功能待实现
+**STOP RULE / 停止原则：** Any unchecked item in Phase 1 or Phase 2 blocks real-subject deployment. / 第一、二阶段未完成的安全与伦理条件阻止真实招募。
 
-**STOP / 限制：** Original participant documents are read-only reference material, never Cloudflare test fixtures. / 真实原件不充当云端测试输入。See [QA strategy / 测试策略](TEST_STRATEGY.md).
+## v0.3 mock-only code verification / v0.3 模拟沙盒验收（2026-10-09）
+- [x] Cloudflare Worker mock + D1 prepared SQL / Worker Mock 与 D1 SQL
+- [x] Synthetic issuance, activation, scoped cookies / 虚构发码、激活与 Cookie
+- [x] Server-enforced stage progression and B/D mock chat / A–F 状态与 B/D 对话
+- [x] Replay guard, per-user call quota, revocation / 重复请求处理、额度与撤销
+- [x] Blinded V2 packet export (mock data only) / 匿名 V2 导出
+- [x] Integration tests on Node in-memory SQLite / 内存数据库集成测试
+- [ ] Cloudflare remote D1 / Wrangler staging test / 云端 D1 运行验证
+- [ ] Real researcher Access identity and abuse controls / 真正管理端 Access 与限流
+- [ ] Full browser walkthrough and automated accessibility checks / 浏览器全流程和无障碍核对
+- [ ] Ethics and data-protection authorisation for real collection / 实施真人研究前的伦理与数据审查
 
+## v0.4.2 — Offline synthetic demonstration sign-off / 离线虚构演示验收
 
-## v0.3 code completion / v0.3 代码完成情况（2026-10-09）
-- [x] Synthetic random enrolment and single activation / 虚构发码与一次激活
-- [x] Scoped, short-lived session cookies / 受限会话
-- [x] D1-shaped SQL and server-side A–F checks / D1 SQL 与阶段状态
-- [x] Mock B/D AI, context continuity, quotas, replay guard / 模拟 AI 对话、额度与防重复
-- [x] Revoke and blinded V2 export / 撤销与匿名导出
-- [x] Bilingual interface and automated Node 22 tests / 双语界面与自动化测试
-- [ ] Actual Cloudflare Wrangler + hosted D1 verification / 真实 Cloudflare 环境验证
-- [ ] Researcher identity via Cloudflare Access (current demo bearer token is insufficient) / 正式管理端认证
-- [ ] Brute-force protection, backups, privacy review, real-study consent / 安全与研究伦理
-- [ ] Full browser end-to-end and accessibility testing / 浏览器流程与无障碍测试
+- [x] Original ten-section information mapped to a bilingual disclosure page. / 原研究 10 节说明已核对
+- [x] Six synthetic-only acknowledgements block advancement before A. / 6 项确认拦截
+- [x] No real names, signatures, emails or phone entries in demo. / 不收集身份资料
+- [x] Historical DeepSeek risks, seven-day withdrawal and five-year retention distinguished from Mock behavior. / 历史条款与演示边界分离
+- [x] Removed obsolete legacy frontend scripts/styles, kept redirect aliases. / 无用代码清理
+- [x] 37 automated tests passed; original-PCR checks passed. / 37 项自动化通过
+- [x] Browser consent → A–F → J01/J02 synthetic walkthrough passed (injected source; 0 JS errors). / 浏览器全流程通过
+- [ ] Verify Windows direct double-click opening on user's own PC. / 用户本机双击待验证
 
-**The current Worker fails closed if configured for live provider/research. / 如果启用真人研究或真实 AI 模式，当前 Worker 会拒绝执行。**
+Cloudflare and real DeepSeek integrations remain out of scope. / 不部署、不调用真实模型、不导入真人材料。
